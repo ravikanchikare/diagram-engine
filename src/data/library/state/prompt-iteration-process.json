@@ -1,0 +1,154 @@
+{
+  "type": "state",
+  "description": "A staged prompt-development workflow: build test cases, draft a prompt, iterate with evals, validate on held-out cases, and ship the polished version.",
+  "size": "large",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "developTestCases",
+      "type": "state",
+      "col": 0,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Develop test cases (include edge cases)"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "engineerPreliminaryPrompt",
+      "type": "state",
+      "col": 1,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Engineer preliminary prompt"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "testPromptAgainstCases",
+      "type": "state",
+      "col": 2,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Test prompt against cases"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "refinePrompt",
+      "type": "state",
+      "col": 3,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Refine prompt"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "testHeldOutEvals",
+      "type": "state",
+      "col": 4,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Test against held-out evals"
+            ]
+          }
+        ],
+        "state": "success"
+      }
+    },
+    {
+      "id": "shipPolishedPrompt",
+      "type": "state",
+      "col": 5,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Ship polished prompt"
+            ]
+          }
+        ],
+        "state": "success"
+      }
+    },
+    {
+      "from": "developTestCases",
+      "to": "engineerPreliminaryPrompt",
+      "label": "define cases"
+    },
+    {
+      "from": "engineerPreliminaryPrompt",
+      "to": "testPromptAgainstCases",
+      "label": "run tests"
+    },
+    {
+      "from": "testPromptAgainstCases",
+      "to": "refinePrompt",
+      "label": "review failures"
+    },
+    {
+      "from": "refinePrompt",
+      "to": "testPromptAgainstCases",
+      "fromPosition": "top",
+      "toPosition": "top",
+      "type": "bend",
+      "label": "iterate with evals"
+    },
+    {
+      "from": "refinePrompt",
+      "to": "testHeldOutEvals",
+      "label": "promote candidate"
+    },
+    {
+      "from": "testHeldOutEvals",
+      "to": "shipPolishedPrompt",
+      "label": "ship"
+    }
+  ]
+}

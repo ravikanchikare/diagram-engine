@@ -1,0 +1,15 @@
+StateNode
+
+           o
+       .--------.
+  o   ( state )   o
+       '--------'
+           o
+
+Visual characteristics
+
+- Pill-shaped node with a fully rounded outline.
+- Centered monospaced label.
+- Four-side handles are available around the node.
+- Visual variants: neutral, accent, success, and danger.
+- Used for stage-style flows where the node body is intentionally compact and symmetric.

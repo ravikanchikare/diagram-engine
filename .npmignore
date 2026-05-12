@@ -1,0 +1,30 @@
+# Source files not part of the engine package
+src/data/
+src/components/
+src/lib/
+src/App.tsx
+src/main.tsx
+src/index.css
+src/test/
+scripts/
+diagram-screenshots/
+output/
+dist/
+index.html
+
+# Test files
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Config files
+vite.config.ts
+tsconfig.json
+typedoc.json
+.kiro/
+.claude/
+.codex/
+.playwright-cli/
+.playwright-mcp/
+AGENTS.md

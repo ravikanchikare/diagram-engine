@@ -1,0 +1,280 @@
+{
+  "name": "API Discovery Flow (Block)",
+  "type": "block",
+  "description": "Incremental discovery flow as a block diagram: see the landscape, narrow the scope, preview the request, then execute with structured output.",
+  "size": "large",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "layer-steps",
+      "type": "layer",
+      "x": 0,
+      "y": -16,
+      "width": 1288,
+      "height": 156,
+      "data": {
+        "title": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Discovery Steps"
+            ]
+          }
+        ],
+        "children": [
+          "step1",
+          "step2",
+          "step3",
+          "step4"
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "layer-info",
+      "type": "layer",
+      "x": 32,
+      "y": 208,
+      "width": 952,
+      "height": 204,
+      "data": {
+        "title": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Principles"
+            ]
+          }
+        ],
+        "children": [
+          "card1",
+          "card2",
+          "card3"
+        ]
+      }
+    },
+    {
+      "id": "step1",
+      "type": "block",
+      "x": 32,
+      "y": 48,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "See the landscape"
+            ]
+          },
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "api domains"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "step2",
+      "type": "block",
+      "x": 320,
+      "y": 48,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Narrow the scope"
+            ]
+          },
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "api list --domain works"
+            ]
+          }
+        ],
+        "state": "danger"
+      }
+    },
+    {
+      "id": "step3",
+      "type": "block",
+      "x": 656,
+      "y": 48,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Preview the request"
+            ]
+          },
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "api /works.list --dry-run"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "step4",
+      "type": "block",
+      "x": 976,
+      "y": 48,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Execute with shape"
+            ]
+          },
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "api /works.list --json"
+            ]
+          }
+        ],
+        "state": "success"
+      }
+    },
+    {
+      "id": "card1",
+      "type": "block",
+      "x": 48,
+      "y": 272,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Starts broad, narrows fast."
+            ]
+          },
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Agents never guess endpoint names."
+            ]
+          }
+        ]
+      },
+      "width": 296,
+      "height": 114
+    },
+    {
+      "id": "card2",
+      "type": "block",
+      "x": 368,
+      "y": 272,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Each stage surfaces the next step."
+            ]
+          },
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Domains → list → schema → result."
+            ]
+          }
+        ]
+      },
+      "width": 296,
+      "height": 114
+    },
+    {
+      "id": "card3",
+      "type": "block",
+      "x": 688,
+      "y": 272,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "The CLI is queryable documentation."
+            ]
+          },
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "No browser tabs, no guessing."
+            ]
+          }
+        ]
+      },
+      "width": 280,
+      "height": 114
+    },
+    {
+      "id": "e1",
+      "from": "step1",
+      "to": "step2",
+      "fromPosition": "right",
+      "toPosition": "left",
+      "type": "straight",
+      "arrowHeadType": "arrowclosed"
+    },
+    {
+      "id": "e2",
+      "from": "step2",
+      "to": "step3",
+      "fromPosition": "right",
+      "toPosition": "left",
+      "type": "straight",
+      "arrowHeadType": "arrowclosed"
+    },
+    {
+      "id": "e3",
+      "from": "step3",
+      "to": "step4",
+      "fromPosition": "right",
+      "toPosition": "left",
+      "type": "straight",
+      "arrowHeadType": "arrowclosed"
+    }
+  ]
+}

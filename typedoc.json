@@ -1,0 +1,10 @@
+{
+  "entryPoints": ["src/engine/index.ts"],
+  "out": "docs",
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "src/engine/README.md",
+  "name": "diagram-engine",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "skipErrorChecking": true
+}

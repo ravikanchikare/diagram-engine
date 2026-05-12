@@ -1,0 +1,732 @@
+/*
+ * diagram-engine — diagram-only stylesheet.
+ *
+ * This file styles the diagram canvas and node/edge components. It does
+ * NOT include the diagram-engine app shell (sidebar, inspectors, etc.).
+ *
+ * Consumers should import this file once at app entry:
+ *   import 'diagram-engine/diagram.css';
+ *
+ * All visual properties are driven by CSS custom properties so that
+ * per-diagram `tokens` blocks can override them at render time. The defaults
+ * below are tuned for the harnez near-monochrome aesthetic; per-diagram
+ * tokens override these via inline style on the canvas wrapper.
+ */
+
+:where(.diagram-canvas) {
+  /* Canvas */
+  --diagram-grid-color: oklch(0.93 0 0);
+
+  /* Node surfaces */
+  --node-bg: oklch(1 0 0);
+  --node-bg-raised: oklch(0.985 0 0);
+  --node-bg-subtle: oklch(0.96 0 0);
+  --node-border: oklch(0.91 0 0);
+  --node-separator: oklch(0.93 0 0);
+  --node-separator-subtle: oklch(0.96 0 0);
+  --node-shadow: 0 1px 3px oklch(0 0 0 / 4%);
+
+  /* Node text */
+  --node-text: oklch(0.12 0 0);
+  --node-text-heading: oklch(0.12 0 0);
+  --node-text-label: oklch(0.42 0 0);
+  --node-text-muted: oklch(0.56 0 0);
+  --node-text-faint: oklch(0.72 0 0);
+  --node-link: oklch(0.56 0.13 150);
+
+  /* Node states */
+  --node-state-accent-bg: oklch(0.94 0.04 150);
+  --node-state-accent-border: oklch(0.78 0.1 150);
+  --node-state-success-bg: oklch(0.94 0.04 150);
+  --node-state-success-border: oklch(0.78 0.1 150);
+  --node-state-danger-bg: oklch(0.94 0.04 22);
+  --node-state-danger-border: oklch(0.78 0.08 22);
+  --node-state-warning-bg: oklch(0.96 0.04 80);
+  --node-state-warning-border: oklch(0.81 0.08 80);
+
+  /* Connectors */
+  --connector-stroke-default: oklch(0.8 0.03 255);
+  --connector-stroke-accent: oklch(0.58 0.22 260);
+  --connector-stroke-success: oklch(0.67 0.19 145);
+  --connector-stroke-warning: oklch(0.72 0.14 80);
+  --connector-stroke-danger: oklch(0.55 0.13 28);
+  --connector-label-background: var(--node-bg-raised);
+
+  /* Sequence actor accents — semantic: default=user(green), success=Claude Code(yellow), accent=sub-agent(blue), warning=orange */
+  --sequence-actor-default: var(--connector-stroke-success);
+  --sequence-actor-accent: var(--connector-stroke-accent);
+  --sequence-actor-success: oklch(0.82 0.16 85);
+  --sequence-actor-warning: oklch(0.68 0.18 50);
+  --sequence-actor-lifeline: var(--node-border);
+
+  /* Lifeline color is used by actor lanes */
+  --node-lifeline: var(--sequence-actor-lifeline);
+
+  font-family: 'Inter Tight', ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+}
+
+/* Dark mode — full token override so nodes/connectors render on dark canvas */
+@media (prefers-color-scheme: dark) {
+  :where(.diagram-canvas) {
+    --diagram-grid-color: oklch(0.24 0.01 285);
+    --node-bg: oklch(0.16 0.006 285);
+    --node-bg-raised: oklch(0.2 0.006 285);
+    --node-bg-subtle: oklch(0.24 0.01 285);
+    --node-border: oklch(0.31 0.008 285);
+    --node-separator: var(--node-border);
+    --node-separator-subtle: var(--node-bg-raised);
+    --node-shadow: 0 1px 3px oklch(0 0 0 / 30%);
+    --node-text: oklch(0.93 0 0);
+    --node-text-heading: var(--node-text);
+    --node-text-label: oklch(0.72 0 0);
+    --node-text-muted: oklch(0.58 0 0);
+    --node-text-faint: oklch(0.42 0 0);
+    --node-link: oklch(0.68 0.15 150);
+    --node-state-accent-bg: oklch(0.25 0.06 150);
+    --node-state-accent-border: oklch(0.62 0.16 150);
+    --node-state-success-bg: var(--node-state-accent-bg);
+    --node-state-success-border: var(--node-state-accent-border);
+    --node-state-warning-bg: oklch(0.24 0.04 80);
+    --node-state-warning-border: oklch(0.58 0.13 80);
+    --node-state-danger-bg: oklch(0.26 0.05 22);
+    --node-state-danger-border: oklch(0.65 0.19 22);
+    --connector-stroke-default: oklch(0.56 0.03 255);
+    --connector-stroke-accent: oklch(0.68 0.16 260);
+    --connector-stroke-success: oklch(0.72 0.18 145);
+    --connector-stroke-warning: oklch(0.78 0.14 80);
+    --connector-stroke-danger: oklch(0.66 0.17 25);
+    --connector-label-background: var(--node-bg-raised);
+    --sequence-actor-default: oklch(0.62 0.18 145);
+    --sequence-actor-accent: oklch(0.58 0.18 260);
+    --sequence-actor-success: oklch(0.66 0.14 85);
+    --sequence-actor-warning: oklch(0.62 0.17 50);
+    --sequence-actor-lifeline: var(--node-border);
+  }
+}
+
+html[data-theme="dark"] :where(.diagram-canvas) {
+  --diagram-grid-color: oklch(0.24 0.01 285);
+  --node-bg: oklch(0.16 0.006 285);
+  --node-bg-raised: oklch(0.2 0.006 285);
+  --node-bg-subtle: oklch(0.24 0.01 285);
+  --node-border: oklch(0.31 0.008 285);
+  --node-separator: var(--node-border);
+  --node-separator-subtle: var(--node-bg-raised);
+  --node-shadow: 0 1px 3px oklch(0 0 0 / 30%);
+  --node-text: oklch(0.93 0 0);
+  --node-text-heading: var(--node-text);
+  --node-text-label: oklch(0.72 0 0);
+  --node-text-muted: oklch(0.58 0 0);
+  --node-text-faint: oklch(0.42 0 0);
+  --node-link: oklch(0.68 0.15 150);
+  --node-state-accent-bg: oklch(0.25 0.06 150);
+  --node-state-accent-border: oklch(0.62 0.16 150);
+  --node-state-success-bg: var(--node-state-accent-bg);
+  --node-state-success-border: var(--node-state-accent-border);
+  --node-state-warning-bg: oklch(0.24 0.04 80);
+  --node-state-warning-border: oklch(0.58 0.13 80);
+  --node-state-danger-bg: oklch(0.26 0.05 22);
+  --node-state-danger-border: oklch(0.65 0.19 22);
+  --connector-stroke-default: oklch(0.56 0.03 255);
+  --connector-stroke-accent: oklch(0.68 0.16 260);
+  --connector-stroke-success: oklch(0.72 0.18 145);
+  --connector-stroke-warning: oklch(0.78 0.14 80);
+  --connector-stroke-danger: oklch(0.66 0.17 25);
+  --connector-label-background: var(--node-bg-raised);
+  --sequence-actor-default: oklch(0.62 0.18 145);
+  --sequence-actor-accent: oklch(0.58 0.18 260);
+  --sequence-actor-success: oklch(0.66 0.14 85);
+  --sequence-actor-warning: oklch(0.62 0.17 50);
+  --sequence-actor-lifeline: var(--node-border);
+}
+
+/* Base canvas + React Flow overrides ---------------------------------- */
+
+.diagram-canvas,
+.diagram-canvas__viewport {
+  width: 100%;
+  height: 100%;
+}
+
+.diagram-canvas {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--node-border);
+  background: var(--node-bg);
+}
+
+.diagram-canvas .react-flow__renderer,
+.diagram-canvas .react-flow__pane {
+  background: transparent;
+}
+
+/* Edge SVGs default to width:0 in Astro+Vite; force them to fill the canvas */
+.diagram-canvas .react-flow__edges,
+.diagram-canvas .react-flow__edges svg {
+  width: 100%;
+  height: 100%;
+}
+
+.diagram-canvas .react-flow__edge-path {
+  stroke: var(--connector-stroke-default);
+  stroke-linecap: round;
+}
+
+/* React Flow Controls — themed to match canvas tokens */
+.diagram-canvas .react-flow__controls {
+  background: var(--node-bg);
+  border: 1px solid var(--node-border);
+  box-shadow: var(--node-shadow);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.diagram-canvas .react-flow__controls-button {
+  background: var(--node-bg);
+  border: none;
+  border-bottom: 1px solid var(--node-border);
+  color: var(--node-text-muted);
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diagram-canvas .react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+
+.diagram-canvas .react-flow__controls-button:hover {
+  background: var(--node-bg-subtle);
+  color: var(--node-text);
+}
+
+.diagram-canvas .react-flow__controls-button svg {
+  fill: currentColor;
+  max-width: 12px;
+  max-height: 12px;
+}
+
+/* Fullscreen: let the canvas fill the viewport */
+.diagram-canvas:fullscreen,
+.diagram-canvas:-webkit-full-screen,
+.diagram-canvas:-moz-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  border-radius: 0;
+}
+
+/* Handle visibility — hidden in readonly mode, visible in editable for selected nodes */
+.diagram-canvas--readonly .react-flow__handle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.diagram-canvas--editable .react-flow__handle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.diagram-canvas--editable .react-flow__node.selected .react-flow__handle {
+  opacity: 0.4;
+  background: var(--accent-strong);
+  pointer-events: auto;
+}
+
+.diagram-canvas--editable .react-flow__handle.connectionindicator {
+  opacity: 0.7;
+  background: var(--accent-strong);
+  pointer-events: auto;
+}
+
+.diagram-canvas--editable .react-flow__node.selected .react-flow__handle:hover {
+  opacity: 0.8;
+  transform: scale(1.3);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-strong) 20%, transparent);
+}
+
+/* Hide the React Flow attribution and default panels in read-only mode */
+.diagram-canvas .react-flow__attribution {
+  display: none;
+}
+
+/* ====================================================================
+ * Sequence diagram — actor + action nodes
+ * ==================================================================== */
+
+.actor-node {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: var(--node-text);
+}
+
+.actor-node__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  background: var(--node-bg-raised);
+  border-bottom: 1px solid var(--node-separator);
+}
+
+.actor-node__accent {
+  position: absolute;
+  width: 4px;
+  border-radius: 999px;
+}
+
+.actor-node__connector {
+  position: absolute;
+  width: 2px;
+  background: var(--node-lifeline);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.actor-node--default .actor-node__accent  { background: var(--sequence-actor-default); }
+.actor-node--default .actor-node__segment { background: var(--sequence-actor-default); }
+.actor-node--success .actor-node__accent  { background: var(--sequence-actor-success); }
+.actor-node--success .actor-node__segment { background: var(--sequence-actor-success); }
+.actor-node--accent  .actor-node__accent  { background: var(--sequence-actor-accent); }
+.actor-node--accent  .actor-node__segment { background: var(--sequence-actor-accent); }
+.actor-node--warning .actor-node__accent  { background: var(--sequence-actor-warning); }
+.actor-node--warning .actor-node__segment { background: var(--sequence-actor-warning); }
+
+.actor-node__heading {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--node-text-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actor-node__heading p { margin: 0; display: inline; }
+
+.actor-node__lane {
+  position: relative;
+  width: 100%;
+}
+
+.actor-node__lifeline {
+  position: absolute;
+  width: 2px;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--node-lifeline);
+}
+
+.actor-node__segment {
+  position: absolute;
+  left: 50%;
+  width: 3px;
+  height: 44px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+}
+
+.actor-node__section {
+  position: relative;
+  width: 100%;
+}
+
+.action-node {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--node-bg-raised);
+  border: 1px solid var(--node-border);
+  border-radius: 12px;
+  min-width: 168px;
+  min-height: 44px;
+  padding: 8px 14px;
+  box-shadow: var(--node-shadow);
+  overflow: hidden;
+}
+
+.action-node--loopback {
+  border-style: dashed;
+  min-width: 160px;
+}
+
+.action-node__content {
+  width: 100%;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  text-align: center;
+  color: var(--node-text);
+  line-height: 1.35;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.action-node__content p {
+  display: inline;
+  margin: 0;
+}
+
+/* ====================================================================
+ * Entity diagram
+ * ==================================================================== */
+
+.entity-node {
+  position: relative;
+  width: 100%;
+  background: var(--node-bg);
+  border: 1px solid var(--node-border);
+  border-radius: 16px;
+  box-shadow: var(--node-shadow);
+  overflow: hidden;
+  min-width: 280px;
+}
+
+.entity-node__header {
+  padding: 12px 16px;
+  background: var(--node-bg-raised);
+  border-bottom: 1px solid var(--node-separator);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--node-text-label);
+}
+
+.entity-node__header p,
+.entity-node__cell p,
+.overview-icon-node__detail p,
+.overview-text-node__content p,
+.rounded-node__content p,
+.rounded-node__title p,
+.rounded-node__subtitle p {
+  margin: 0;
+}
+
+.entity-node__table {
+  display: grid;
+}
+
+.entity-node__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(96px, 0.9fr) minmax(0, 1.25fr);
+  gap: 12px;
+  min-height: 36px;
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--node-separator-subtle);
+  font-size: 0.77rem;
+}
+
+.entity-node__row:last-child {
+  border-bottom: none;
+}
+
+.entity-node__cell {
+  min-width: 0;
+  font-size: 0.77rem;
+  line-height: 1.35;
+  color: var(--node-text);
+}
+
+.entity-node__cell--name {
+  font-weight: 600;
+  color: var(--node-text-muted);
+}
+
+.entity-node__cell--value {
+  color: var(--node-text);
+  font-family: var(--font-mono, 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace);
+  overflow-wrap: anywhere;
+}
+
+.entity-node__toggle {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-top: 1px solid var(--node-separator);
+  background: var(--node-bg-subtle);
+  color: var(--node-link);
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.entity-node__toggle:hover {
+  background: var(--node-bg-raised);
+  color: var(--node-text);
+}
+
+/* ====================================================================
+ * Overview diagram — icon + text nodes
+ * ==================================================================== */
+
+.overview-icon-node {
+  position: relative;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  overflow: visible;
+  color: var(--node-text-heading);
+}
+
+.overview-icon-node__glyph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border: 1px solid var(--node-border);
+  border-radius: 20px;
+  background: var(--node-bg);
+  box-shadow: var(--node-shadow);
+}
+
+.overview-icon-node__svg {
+  width: 30px;
+  height: 30px;
+}
+
+.overview-icon-node__label {
+  text-align: center;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--node-text-heading);
+}
+
+.overview-icon-node__detail {
+  max-width: 120px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--node-text-faint);
+}
+
+.overview-text-node {
+  position: relative;
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--node-bg);
+  border: 1px solid var(--node-border);
+  border-radius: 16px;
+  padding: 10px 18px;
+  min-width: 160px;
+  box-shadow: var(--node-shadow);
+}
+
+.overview-text-node--default,
+.overview-text-node--accent {
+  background: var(--node-state-accent-bg);
+  border-color: var(--node-state-accent-border);
+}
+
+.overview-text-node--success {
+  background: var(--node-state-success-bg);
+  border-color: var(--node-state-success-border);
+}
+
+.overview-text-node--danger {
+  background: var(--node-state-danger-bg);
+  border-color: var(--node-state-danger-border);
+}
+
+.overview-text-node__content {
+  font-family: var(--font-mono, 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--node-text);
+}
+
+/* ====================================================================
+ * State diagram
+ * ==================================================================== */
+
+.rounded-node {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--node-bg);
+  border: 1px solid var(--node-border);
+  color: var(--node-text);
+  box-shadow: var(--node-shadow);
+}
+
+/* Pill shape (state diagrams) */
+
+.rounded-node--pill {
+  border-radius: 999px;
+  padding: 0 18px;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.rounded-node--pill .rounded-node__content {
+  font-family: var(--font-mono, 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace);
+  font-size: 0.79rem;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--node-text);
+}
+
+/* Rounded shape (block diagrams) */
+
+.rounded-node--rounded {
+  border-radius: 6px;
+  padding: 14px 16px;
+  min-width: 148px;
+  max-width: 280px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+/* Variant modifiers (shared across shapes) */
+
+.rounded-node--accent {
+  background: var(--node-state-accent-bg);
+  border-color: var(--node-state-accent-border);
+}
+
+.rounded-node--success {
+  background: var(--node-state-success-bg);
+  border-color: var(--node-state-success-border);
+}
+
+.rounded-node--warning {
+  background: var(--node-state-warning-bg);
+  border-color: var(--node-state-warning-border);
+}
+
+.rounded-node--danger {
+  background: var(--node-state-danger-bg);
+  border-color: var(--node-state-danger-border);
+}
+
+.block-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--node-border);
+  border-radius: 8px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.block-layer--accent {
+  border-color: var(--node-state-accent-border);
+  box-shadow: inset 0 0 0 1px var(--node-state-accent-border);
+}
+
+.block-layer--success {
+  border-color: var(--node-state-success-border);
+  box-shadow: inset 0 0 0 1px var(--node-state-success-border);
+}
+
+.block-layer--warning {
+  border-color: var(--node-state-warning-border);
+  box-shadow: inset 0 0 0 1px var(--node-state-warning-border);
+}
+
+.block-layer--danger {
+  border-color: var(--node-state-danger-border);
+  box-shadow: inset 0 0 0 1px var(--node-state-danger-border);
+}
+
+.block-layer__title {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--node-border);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--node-text-heading);
+  background: var(--node-bg-raised);
+}
+
+.block-layer__title p { margin: 0; }
+
+.block-node__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.block-node__title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--node-text-heading);
+}
+
+.block-node__subtitle {
+  font-size: 0.75rem;
+  color: var(--node-text-muted);
+}
+
+/* ====================================================================
+ * Edge labels
+ * ==================================================================== */
+
+.diagram-edge-label {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--connector-label-background);
+  font-family: var(--font-mono, 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace);
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--node-text-muted);
+  white-space: nowrap;
+}
+
+/* ====================================================================
+ * Rich text — Markdoc glossary, links, inline code
+ * ==================================================================== */
+
+.markdoc-glossary {
+  color: var(--node-link);
+  font-style: normal;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.markdoc-link {
+  color: var(--node-link);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+.diagram-canvas code {
+  padding: 0;
+  background: transparent;
+  color: var(--node-text-muted);
+  font-size: 0.98em;
+}
+
+/* ====================================================================
+ * Shared utilities
+ * ==================================================================== */
+
+.collapsible-chevron {
+  transition: transform 120ms ease;
+}

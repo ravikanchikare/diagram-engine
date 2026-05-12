@@ -1,0 +1,188 @@
+{
+  "type": "overview",
+  "description": "The OpenAPI specification is the interface: specs are parsed at startup and drive every available command automatically.",
+  "size": "medium",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "spec-a",
+      "type": "text",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "OpenAPI Spec A"
+            ]
+          }
+        ],
+        "size": "small",
+        "color": "default"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "spec-b",
+      "type": "text",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "OpenAPI Spec B"
+            ]
+          }
+        ],
+        "size": "small",
+        "color": "default"
+      },
+      "position": {
+        "x": 0,
+        "y": 96
+      }
+    },
+    {
+      "id": "spec-c",
+      "type": "text",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "OpenAPI Spec C"
+            ]
+          }
+        ],
+        "size": "small",
+        "color": "default"
+      },
+      "position": {
+        "x": 0,
+        "y": 192
+      }
+    },
+    {
+      "id": "cli",
+      "type": "icon",
+      "data": {
+        "icon": "claude-code",
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "spec = interface"
+            ]
+          }
+        ],
+        "size": "auto",
+        "color": "default"
+      },
+      "position": {
+        "x": 304,
+        "y": 64
+      }
+    },
+    {
+      "id": "agent",
+      "type": "icon",
+      "data": {
+        "icon": "sub-agent",
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "autonomous discovery"
+            ]
+          }
+        ],
+        "size": "auto",
+        "color": "default"
+      },
+      "position": {
+        "x": 560,
+        "y": -32
+      }
+    },
+    {
+      "id": "developer",
+      "type": "icon",
+      "data": {
+        "icon": "user",
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "always current, no drift"
+            ]
+          }
+        ],
+        "size": "auto",
+        "color": "default"
+      },
+      "position": {
+        "x": 560,
+        "y": 144
+      }
+    },
+    {
+      "id": "edge-spec-a-cli",
+      "source": "spec-a",
+      "target": "cli",
+      "type": "default",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "top"
+    },
+    {
+      "id": "edge-spec-b-cli",
+      "source": "spec-b",
+      "target": "cli",
+      "type": "default",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "edge-spec-c-cli",
+      "source": "spec-c",
+      "target": "cli",
+      "type": "default",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "bottom"
+    },
+    {
+      "id": "edge-cli-agent",
+      "source": "cli",
+      "target": "agent",
+      "type": "default",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "edge-cli-developer",
+      "source": "cli",
+      "target": "developer",
+      "type": "default",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    }
+  ]
+}

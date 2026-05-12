@@ -1,0 +1,128 @@
+{
+  "name": "Prompt Eval Loop",
+  "type": "state",
+  "description": "A prompt-engineering loop: edit, run, validate, analyze, and ship or iterate.",
+  "size": "large",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "edit",
+      "type": "state",
+      "col": 0,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Edit prompt"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "run",
+      "type": "state",
+      "col": 1,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Run models"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "validate",
+      "type": "state",
+      "col": 2,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Validate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "analyze",
+      "type": "state",
+      "col": 3,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Analyze"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ship",
+      "type": "state",
+      "col": 4,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Ship"
+            ]
+          }
+        ],
+        "state": "success"
+      }
+    },
+    {
+      "from": "edit",
+      "to": "run"
+    },
+    {
+      "from": "run",
+      "to": "validate"
+    },
+    {
+      "from": "validate",
+      "to": "analyze",
+      "label": "all pass"
+    },
+    {
+      "from": "analyze",
+      "to": "ship"
+    },
+    {
+      "from": "validate",
+      "to": "edit",
+      "fromPosition": "top",
+      "toPosition": "top",
+      "type": "bend",
+      "label": "iterate on failures",
+      "state": "danger"
+    }
+  ]
+}

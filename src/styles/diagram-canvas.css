@@ -1,0 +1,108 @@
+.react-flow {
+  background: transparent;
+}
+
+/* Editable mode — drag cursors */
+.diagram-canvas--editable .react-flow__node {
+  cursor: grab;
+}
+
+.diagram-canvas--editable .react-flow__node.dragging {
+  cursor: grabbing;
+}
+
+/* Dev toolbar */
+.diagram-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.diagram-toolbar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.diagram-toolbar__button {
+  pointer-events: auto;
+  border: 1px solid color-mix(in oklab, var(--accent-strong) 24%, transparent);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: color-mix(in oklab, var(--accent-strong) 10%, var(--background));
+  color: var(--accent-strong);
+  font-size: 0.76rem;
+  font-weight: 600;
+  box-shadow: 0 10px 20px color-mix(in oklab, var(--node-text-muted) 12%, transparent);
+  cursor: pointer;
+}
+
+.diagram-toolbar__button:hover {
+  background: color-mix(in oklab, var(--accent-strong) 14%, var(--background));
+}
+
+/* Selection highlights — additive borders on selected nodes in editable mode */
+.diagram-canvas--editable .react-flow__node.selected .entity-node,
+.diagram-canvas--editable .react-flow__node.selected .overview-text-node,
+.diagram-canvas--editable .react-flow__node.selected .state-node,
+.diagram-canvas--editable .react-flow__node.selected .block-node,
+.diagram-canvas--editable .react-flow__node.selected .block-layer,
+.diagram-canvas--editable .react-flow__node.selected .overview-icon-node__glyph {
+  border-color: color-mix(in oklab, var(--node-link) 48%, transparent);
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--node-link) 14%, transparent),
+    0 12px 26px color-mix(in oklab, var(--node-text-muted) 12%, transparent);
+}
+
+.diagram-canvas--editable .react-flow__edge.selected .react-flow__edge-path {
+  stroke: var(--node-link);
+  stroke-width: 2.2;
+}
+
+.diagram-canvas--editable .react-flow__edge.selected ~ .react-flow__edgelabel-renderer .diagram-edge-label {
+  color: var(--node-link);
+}
+
+/* Edge routing handles — bend and anchor manipulation */
+.diagram-edge-handle {
+  z-index: 6;
+  width: 18px;
+  height: 18px;
+  border: 1px solid color-mix(in oklab, var(--node-link) 36%, transparent);
+  border-radius: 999px;
+  background: var(--node-bg-raised);
+  box-shadow: 0 6px 14px color-mix(in oklab, var(--node-text-muted) 14%, transparent);
+  cursor: grab;
+}
+
+.diagram-edge-handle:hover {
+  border-color: color-mix(in oklab, var(--node-link) 52%, transparent);
+  box-shadow: 0 8px 18px color-mix(in oklab, var(--node-text-muted) 18%, transparent);
+}
+
+.diagram-edge-handle:active {
+  cursor: grabbing;
+}
+
+.diagram-edge-handle--anchor::before,
+.diagram-edge-handle--bend::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: inherit;
+  background: color-mix(in oklab, var(--node-link) 82%, transparent);
+  pointer-events: none;
+}
+
+.diagram-edge-handle--bend::before {
+  inset: 3px;
+  background: color-mix(in oklab, var(--node-link) 92%, var(--node-text-heading));
+}
+
+.diagram-edge-handle::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+}

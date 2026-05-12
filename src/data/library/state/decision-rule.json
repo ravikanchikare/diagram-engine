@@ -1,0 +1,144 @@
+{
+  "type": "state",
+  "description": "The decision rule: Claude Code delegates only when the intermediate work does not need to stay visible in the main thread.",
+  "size": "large",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "evaluateVisibility",
+      "type": "state",
+      "col": 1,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Does intermediate work matter?"
+            ]
+          }
+        ]
+      },
+      "x": 304,
+      "y": 176
+    },
+    {
+      "id": "mainThread",
+      "type": "state",
+      "col": 2,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Keep debugging in main thread"
+            ]
+          }
+        ],
+        "state": "success"
+      },
+      "x": 608,
+      "y": 0
+    },
+    {
+      "id": "delegateResearch",
+      "type": "state",
+      "col": 2,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Delegate isolated research"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": 608,
+      "y": 352
+    },
+    {
+      "id": "subagentPrivate",
+      "type": "state",
+      "col": 3,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Sub-agent works privately"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": 912,
+      "y": 352
+    },
+    {
+      "id": "answerReturned",
+      "type": "state",
+      "col": 3,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return chosen workflow answer"
+            ]
+          }
+        ],
+        "state": "success"
+      },
+      "x": 912,
+      "y": 0
+    },
+    {
+      "from": "evaluateVisibility",
+      "to": "mainThread",
+      "label": "yes",
+      "type": "bend",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "evaluateVisibility",
+      "to": "delegateResearch",
+      "label": "no",
+      "type": "bend",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "mainThread",
+      "to": "answerReturned",
+      "label": "stay local",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "delegateResearch",
+      "to": "subagentPrivate",
+      "label": "delegate",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    }
+  ]
+}

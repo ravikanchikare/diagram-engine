@@ -1,0 +1,97 @@
+/* Dark mode overrides for editor and diagram internals. */
+
+.dark {
+  --app-editor-string: oklch(0.78 0.12 160);
+  --app-editor-number: oklch(0.74 0.13 255);
+  --app-editor-keyword: oklch(0.74 0.13 310);
+}
+
+.dark .json-editor-pane {
+  background: var(--background);
+}
+
+.dark .json-editor-pane__surface > .jsoneditor {
+  border-color: transparent;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dark .json-editor-pane__surface .jsoneditor-navigation-bar,
+.dark .json-editor-pane__surface .jsoneditor-statusbar {
+  border-color: var(--border);
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.dark .json-editor-pane__surface .jsoneditor-tree,
+.dark .json-editor-pane__surface .ace-jsoneditor {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dark .json-editor-pane__surface .jsoneditor-text,
+.dark .json-editor-pane__surface .ace_editor,
+.dark .json-editor-pane__surface .ace_scroller,
+.dark .json-editor-pane__surface .ace_content,
+.dark .json-editor-pane__surface textarea {
+  background: var(--background) !important;
+  color: var(--foreground);
+}
+
+.dark .json-editor-pane__surface .ace_indent-guide,
+.dark .json-editor-pane__surface .ace_indent-guide-active,
+.dark .json-editor-pane__surface .ace_print-margin {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.dark .json-editor-pane__surface .ace_marker-layer .ace_active-line,
+.dark .json-editor-pane__surface .ace_gutter-active-line {
+  background: var(--muted) !important;
+}
+
+.dark .json-editor-pane__surface .ace_marker-layer .ace_selection,
+.dark .json-editor-pane__surface .ace_marker-layer .ace_selected-word {
+  background: color-mix(in oklab, var(--accent) 40%, transparent) !important;
+}
+
+.dark .json-editor-pane__surface .ace_cursor {
+  border-left: 2px solid var(--foreground) !important;
+}
+
+.dark .json-editor-pane__surface .ace_gutter {
+  background: var(--muted) !important;
+  color: var(--muted-foreground) !important;
+}
+
+.dark .json-editor-pane__surface .ace_string {
+  color: var(--app-editor-string);
+}
+
+.dark .json-editor-pane__surface .ace_numeric {
+  color: var(--app-editor-number);
+}
+
+.dark .json-editor-pane__surface .ace_boolean,
+.dark .json-editor-pane__surface .ace_keyword,
+.dark .json-editor-pane__surface .ace_constant {
+  color: var(--app-editor-keyword);
+}
+
+.dark .json-editor-pane__surface .ace_null {
+  color: var(--muted-foreground);
+}
+
+.dark .json-editor-pane__surface .ace_variable {
+  color: var(--foreground);
+}
+
+.dark .diagram-toolbar__button {
+  border-color: color-mix(in oklab, var(--accent-strong) 35%, transparent);
+  background: color-mix(in oklab, var(--accent-strong) 18%, var(--background));
+  color: var(--accent-strong);
+}
+
+.dark .entity-node__toggle:hover {
+  background: var(--node-bg-raised);
+}

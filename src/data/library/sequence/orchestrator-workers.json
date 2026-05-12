@@ -1,0 +1,344 @@
+{
+  "name": "Orchestrator\u2013Workers",
+  "type": "sequence",
+  "description": "An orchestrator LLM decomposes a complex task, delegates dynamic subtasks to workers, and synthesizes their results into one answer.",
+  "size": "large",
+  "positioning": "auto",
+  "elements": [
+    {
+      "id": "user",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "User"
+            ]
+          }
+        ],
+        "index": 0,
+        "color": "default",
+        "rows": 7
+      }
+    },
+    {
+      "id": "orchestrator",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Orchestrator"
+            ]
+          }
+        ],
+        "index": 1,
+        "color": "success",
+        "rows": 7
+      }
+    },
+    {
+      "id": "workerA",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Worker A"
+            ]
+          }
+        ],
+        "index": 2,
+        "color": "accent",
+        "rows": 7
+      }
+    },
+    {
+      "id": "workerB",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Worker B"
+            ]
+          }
+        ],
+        "index": 3,
+        "color": "warning",
+        "rows": 7
+      }
+    },
+    {
+      "id": "edge-1-user-orchestrator-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "user",
+      "sourceHandle": "user-1-right",
+      "target": "node-1-user-orchestrator",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-1-user-orchestrator",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Send complex task"
+            ]
+          }
+        ],
+        "row": 1,
+        "from": "user",
+        "to": "orchestrator"
+      }
+    },
+    {
+      "id": "edge-1-user-orchestrator-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-1-user-orchestrator",
+      "sourceHandle": "right",
+      "target": "orchestrator",
+      "targetHandle": "orchestrator-1-left"
+    },
+    {
+      "id": "edge-2-orchestrator-orchestrator-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "orchestrator",
+      "sourceHandle": "orchestrator-2-right",
+      "target": "node-2-orchestrator-orchestrator",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-2-orchestrator-orchestrator",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Plan subtasks"
+            ]
+          }
+        ],
+        "row": 2,
+        "from": "orchestrator",
+        "to": "orchestrator"
+      }
+    },
+    {
+      "id": "edge-2-orchestrator-orchestrator-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-2-orchestrator-orchestrator",
+      "sourceHandle": "bottom",
+      "target": "orchestrator",
+      "targetHandle": "orchestrator-3-right"
+    },
+    {
+      "id": "edge-3-orchestrator-workerA-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "orchestrator",
+      "sourceHandle": "orchestrator-3-right",
+      "target": "node-3-orchestrator-workerA",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-3-orchestrator-workerA",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Delegate worker A"
+            ]
+          }
+        ],
+        "row": 3,
+        "from": "orchestrator",
+        "to": "workerA"
+      }
+    },
+    {
+      "id": "edge-3-orchestrator-workerA-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-3-orchestrator-workerA",
+      "sourceHandle": "right",
+      "target": "workerA",
+      "targetHandle": "workerA-3-left"
+    },
+    {
+      "id": "edge-4-orchestrator-workerB-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "orchestrator",
+      "sourceHandle": "orchestrator-4-right",
+      "target": "node-4-orchestrator-workerB",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-4-orchestrator-workerB",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Delegate worker B"
+            ]
+          }
+        ],
+        "row": 4,
+        "from": "orchestrator",
+        "to": "workerB"
+      }
+    },
+    {
+      "id": "edge-4-orchestrator-workerB-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-4-orchestrator-workerB",
+      "sourceHandle": "right",
+      "target": "workerB",
+      "targetHandle": "workerB-4-left"
+    },
+    {
+      "id": "edge-5-workerA-orchestrator-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "workerA",
+      "sourceHandle": "workerA-5-left",
+      "target": "node-5-workerA-orchestrator",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-5-workerA-orchestrator",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return findings"
+            ]
+          }
+        ],
+        "row": 5,
+        "from": "workerA",
+        "to": "orchestrator"
+      }
+    },
+    {
+      "id": "edge-5-workerA-orchestrator-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-5-workerA-orchestrator",
+      "sourceHandle": "left",
+      "target": "orchestrator",
+      "targetHandle": "orchestrator-5-right"
+    },
+    {
+      "id": "edge-6-workerB-orchestrator-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "workerB",
+      "sourceHandle": "workerB-6-left",
+      "target": "node-6-workerB-orchestrator",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-6-workerB-orchestrator",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return findings"
+            ]
+          }
+        ],
+        "row": 6,
+        "from": "workerB",
+        "to": "orchestrator"
+      }
+    },
+    {
+      "id": "edge-6-workerB-orchestrator-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-6-workerB-orchestrator",
+      "sourceHandle": "left",
+      "target": "orchestrator",
+      "targetHandle": "orchestrator-6-right"
+    },
+    {
+      "id": "edge-7-orchestrator-user-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "orchestrator",
+      "sourceHandle": "orchestrator-7-left",
+      "target": "node-7-orchestrator-user",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-7-orchestrator-user",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Synthesize final answer"
+            ]
+          }
+        ],
+        "row": 7,
+        "from": "orchestrator",
+        "to": "user"
+      }
+    },
+    {
+      "id": "edge-7-orchestrator-user-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-7-orchestrator-user",
+      "sourceHandle": "left",
+      "target": "user",
+      "targetHandle": "user-7-right"
+    }
+  ]
+}

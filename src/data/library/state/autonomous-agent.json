@@ -1,0 +1,188 @@
+{
+  "name": "Autonomous Agent",
+  "type": "state",
+  "description": "An autonomous agent plans, uses tools, checks the environment for ground truth, and pauses for human guidance when it hits risk or uncertainty.",
+  "size": "large",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "clarifyGoal",
+      "type": "state",
+      "col": 0,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Clarify goal and guardrails"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": 0,
+      "y": 176
+    },
+    {
+      "id": "planNextAction",
+      "type": "state",
+      "col": 1,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Plan next action"
+            ]
+          }
+        ]
+      },
+      "x": 304,
+      "y": 176
+    },
+    {
+      "id": "useTools",
+      "type": "state",
+      "col": 2,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Use tools and act"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": 608,
+      "y": 176
+    },
+    {
+      "id": "inspectGroundTruth",
+      "type": "state",
+      "col": 3,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Inspect ground truth"
+            ]
+          }
+        ]
+      },
+      "x": 912,
+      "y": 176
+    },
+    {
+      "id": "askHuman",
+      "type": "state",
+      "col": 2,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Ask human for judgment"
+            ]
+          }
+        ],
+        "state": "danger"
+      },
+      "x": 608,
+      "y": 272
+    },
+    {
+      "id": "finishTask",
+      "type": "state",
+      "col": 4,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Complete or stop"
+            ]
+          }
+        ],
+        "state": "success"
+      },
+      "x": 1216,
+      "y": 176
+    },
+    {
+      "from": "clarifyGoal",
+      "to": "planNextAction",
+      "label": "task is clear",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "planNextAction",
+      "to": "useTools",
+      "label": "choose next move",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "useTools",
+      "to": "inspectGroundTruth",
+      "label": "observe results",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "inspectGroundTruth",
+      "to": "finishTask",
+      "label": "done",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "inspectGroundTruth",
+      "to": "planNextAction",
+      "fromPosition": "top",
+      "toPosition": "top",
+      "type": "bend",
+      "label": "more work"
+    },
+    {
+      "from": "inspectGroundTruth",
+      "to": "askHuman",
+      "type": "bend",
+      "fromPosition": "left",
+      "toPosition": "top"
+    },
+    {
+      "from": "askHuman",
+      "to": "planNextAction",
+      "label": "resume with guidance",
+      "type": "bend",
+      "fromPosition": "left",
+      "toPosition": "bottom"
+    }
+  ]
+}

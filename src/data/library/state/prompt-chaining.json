@@ -1,0 +1,180 @@
+{
+  "name": "Prompt Chaining",
+  "type": "state",
+  "description": "Prompt chaining decomposes a task into fixed subtasks, checks intermediate outputs, and retries earlier steps when a gate fails.",
+  "size": "large",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "promptOne",
+      "type": "state",
+      "col": 0,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Prompt 1 solves subtask"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "gateOne",
+      "type": "state",
+      "col": 1,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Gate: output usable?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "promptTwo",
+      "type": "state",
+      "col": 2,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Prompt 2 builds on output"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "gateTwo",
+      "type": "state",
+      "col": 3,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Gate: still on track?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "repairOutput",
+      "type": "state",
+      "col": 2,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Repair prompt or retry"
+            ]
+          }
+        ],
+        "state": "danger"
+      }
+    },
+    {
+      "id": "promptThree",
+      "type": "state",
+      "col": 4,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Prompt 3 finalizes answer"
+            ]
+          }
+        ],
+        "state": "success"
+      }
+    },
+    {
+      "id": "returnResult",
+      "type": "state",
+      "col": 5,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return composed result"
+            ]
+          }
+        ],
+        "state": "success"
+      }
+    },
+    {
+      "from": "promptOne",
+      "to": "gateOne",
+      "label": "pass intermediate"
+    },
+    {
+      "from": "gateOne",
+      "to": "promptTwo",
+      "label": "yes"
+    },
+    {
+      "from": "gateOne",
+      "to": "repairOutput",
+      "label": "no"
+    },
+    {
+      "from": "promptTwo",
+      "to": "gateTwo",
+      "label": "handoff"
+    },
+    {
+      "from": "gateTwo",
+      "to": "promptThree",
+      "label": "yes"
+    },
+    {
+      "from": "gateTwo",
+      "to": "repairOutput",
+      "label": "no"
+    },
+    {
+      "from": "repairOutput",
+      "to": "promptOne",
+      "label": "retry earlier step"
+    },
+    {
+      "from": "promptThree",
+      "to": "returnResult",
+      "label": "complete"
+    }
+  ]
+}

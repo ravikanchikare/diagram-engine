@@ -1,0 +1,222 @@
+{
+  "name": "Parallelization",
+  "type": "state",
+  "description": "Parallelization either divides work into independent subtasks or runs multiple attempts, then aggregates the outputs for confidence or speed.",
+  "size": "large",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "splitTask",
+      "type": "state",
+      "col": 0,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Split or replicate task"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": -32,
+      "y": 176
+    },
+    {
+      "id": "sectioning",
+      "type": "state",
+      "col": 1,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Run independent subtasks"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": 288,
+      "y": 80,
+      "width": 183,
+      "height": 52
+    },
+    {
+      "id": "voting",
+      "type": "state",
+      "col": 1,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Run multiple attempts"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": 288,
+      "y": 176
+    },
+    {
+      "id": "aggregateOutputs",
+      "type": "state",
+      "col": 2,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Aggregate outputs"
+            ]
+          }
+        ]
+      },
+      "x": 592,
+      "y": 176
+    },
+    {
+      "id": "checkConfidence",
+      "type": "state",
+      "col": 3,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Confidence high enough?"
+            ]
+          }
+        ]
+      },
+      "x": 880,
+      "y": 176
+    },
+    {
+      "id": "rerunWorkers",
+      "type": "state",
+      "col": 2,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Adjust workers or thresholds"
+            ]
+          }
+        ],
+        "state": "danger"
+      },
+      "x": 288,
+      "y": 272,
+      "width": 204,
+      "height": 52
+    },
+    {
+      "id": "returnCombinedResult",
+      "type": "state",
+      "col": 4,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return combined result"
+            ]
+          }
+        ],
+        "state": "success"
+      },
+      "x": 1152,
+      "y": 176
+    },
+    {
+      "from": "splitTask",
+      "to": "sectioning",
+      "label": "sectioning",
+      "type": "bend",
+      "fromPosition": "top",
+      "toPosition": "left"
+    },
+    {
+      "from": "splitTask",
+      "to": "voting",
+      "label": "voting",
+      "type": "bend",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "sectioning",
+      "to": "aggregateOutputs",
+      "label": "merge sections",
+      "type": "bend",
+      "fromPosition": "right",
+      "toPosition": "top"
+    },
+    {
+      "from": "voting",
+      "to": "aggregateOutputs",
+      "label": "count votes",
+      "type": "bend",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "aggregateOutputs",
+      "to": "checkConfidence",
+      "label": "score result",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "checkConfidence",
+      "to": "returnCombinedResult",
+      "label": "yes",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "checkConfidence",
+      "to": "rerunWorkers",
+      "label": "no",
+      "type": "bend",
+      "fromPosition": "bottom",
+      "toPosition": "right"
+    },
+    {
+      "from": "rerunWorkers",
+      "to": "splitTask",
+      "label": "rerun",
+      "type": "bend",
+      "fromPosition": "left",
+      "toPosition": "bottom"
+    }
+  ]
+}

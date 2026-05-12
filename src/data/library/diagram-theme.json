@@ -1,0 +1,21 @@
+{
+  "type": "diagram-theme",
+  "tokens": {
+    "light": {
+      "sequenceActor": {
+        "default": "var(--success)",
+        "success": "var(--yellow)",
+        "accent": "var(--blue)",
+        "lifeline": "var(--node-lifeline)"
+      }
+    },
+    "dark": {
+      "sequenceActor": {
+        "default": "var(--success)",
+        "success": "var(--yellow)",
+        "accent": "var(--blue)",
+        "lifeline": "var(--node-lifeline)"
+      }
+    }
+  }
+}

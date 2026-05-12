@@ -1,0 +1,18 @@
+DashedEdge
+
+Primary shape
+
+source - - - - - - - - - - - - - - -> target
+
+Stepped example
+
+source - - - - - +
+                  |
+                  + - - - - - - - -> target
+
+Visual characteristics
+
+- Smooth-step edge with rounded bends.
+- Dashed stroke by default (`6 6`) unless the edge style overrides it.
+- Rounded line caps so dash ends stay soft.
+- Arrowhead comes from the supplied `markerEnd`.

@@ -1,0 +1,105 @@
+.json-editor-pane {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--background);
+  position: relative;
+}
+
+.json-editor-pane__copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--muted);
+  color: var(--foreground);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.json-editor-pane__copy:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.json-editor-pane__surface,
+.json-editor-pane__surface > .jsoneditor,
+.json-editor-pane__surface .jsoneditor-outer {
+  height: 100%;
+  min-height: 0;
+}
+
+.json-editor-pane__surface > .jsoneditor {
+  border: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.84rem;
+}
+
+.json-editor-pane__surface .jsoneditor-navigation-bar,
+.json-editor-pane__surface .jsoneditor-statusbar {
+  border-color: var(--border);
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.json-editor-pane__surface .jsoneditor-tree,
+.json-editor-pane__surface .ace-jsoneditor {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.json-editor-pane__surface .jsoneditor-text,
+.json-editor-pane__surface .ace_editor,
+.json-editor-pane__surface .ace_scroller,
+.json-editor-pane__surface .ace_content,
+.json-editor-pane__surface textarea {
+  background: var(--background) !important;
+  color: var(--foreground);
+}
+
+.json-editor-pane__surface .ace_indent-guide,
+.json-editor-pane__surface .ace_indent-guide-active,
+.json-editor-pane__surface .ace_print-margin {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.json-editor-pane__surface .ace_marker-layer .ace_active-line,
+.json-editor-pane__surface .ace_gutter-active-line {
+  background: var(--muted) !important;
+}
+
+.json-editor-pane__surface .ace_marker-layer .ace_selection,
+.json-editor-pane__surface .ace_marker-layer .ace_selected-word {
+  background: color-mix(in oklab, var(--accent) 55%, transparent) !important;
+}
+
+.json-editor-pane__surface .ace_cursor {
+  border-left: 2px solid var(--foreground) !important;
+}
+
+.json-editor-pane__surface .ace-jsoneditor,
+.json-editor-pane__surface .ace-jsoneditor *,
+.json-editor-pane__surface .jsoneditor-field,
+.json-editor-pane__surface .jsoneditor-value,
+.json-editor-pane__surface textarea {
+  font-family: var(--font-mono, 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace);
+}
+
+.json-editor-pane__surface .ace_gutter {
+  background: var(--muted) !important;
+  color: var(--muted-foreground) !important;
+}
+
+.json-editor-pane__surface .jsoneditor-tree button {
+  cursor: pointer;
+}
+
+.json-editor-pane--invalid .jsoneditor {
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--danger-fg) 18%, transparent);
+}

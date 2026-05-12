@@ -1,0 +1,362 @@
+{
+  "name": "Evaluator\u2013Optimizer",
+  "type": "sequence",
+  "description": "An optimizer LLM drafts and revises while an evaluator LLM reviews each candidate against clear criteria until the result is ready.",
+  "size": "large",
+  "positioning": "auto",
+  "elements": [
+    {
+      "id": "user",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "User"
+            ]
+          }
+        ],
+        "index": 0,
+        "color": "default",
+        "rows": 8
+      }
+    },
+    {
+      "id": "optimizer",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Optimizer"
+            ]
+          }
+        ],
+        "index": 1,
+        "color": "success",
+        "rows": 8
+      }
+    },
+    {
+      "id": "evaluator",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Evaluator"
+            ]
+          }
+        ],
+        "index": 2,
+        "color": "accent",
+        "rows": 8
+      }
+    },
+    {
+      "id": "edge-1-user-optimizer-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "user",
+      "sourceHandle": "user-1-right",
+      "target": "node-1-user-optimizer",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-1-user-optimizer",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Set quality bar"
+            ]
+          }
+        ],
+        "row": 1,
+        "from": "user",
+        "to": "optimizer"
+      }
+    },
+    {
+      "id": "edge-1-user-optimizer-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-1-user-optimizer",
+      "sourceHandle": "right",
+      "target": "optimizer",
+      "targetHandle": "optimizer-1-left"
+    },
+    {
+      "id": "edge-2-optimizer-optimizer-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "optimizer",
+      "sourceHandle": "optimizer-2-right",
+      "target": "node-2-optimizer-optimizer",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-2-optimizer-optimizer",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Draft candidate"
+            ]
+          }
+        ],
+        "row": 2,
+        "from": "optimizer",
+        "to": "optimizer"
+      }
+    },
+    {
+      "id": "edge-2-optimizer-optimizer-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-2-optimizer-optimizer",
+      "sourceHandle": "bottom",
+      "target": "optimizer",
+      "targetHandle": "optimizer-3-right"
+    },
+    {
+      "id": "edge-3-optimizer-evaluator-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "optimizer",
+      "sourceHandle": "optimizer-3-right",
+      "target": "node-3-optimizer-evaluator",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-3-optimizer-evaluator",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Send for review"
+            ]
+          }
+        ],
+        "row": 3,
+        "from": "optimizer",
+        "to": "evaluator"
+      }
+    },
+    {
+      "id": "edge-3-optimizer-evaluator-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-3-optimizer-evaluator",
+      "sourceHandle": "right",
+      "target": "evaluator",
+      "targetHandle": "evaluator-3-left"
+    },
+    {
+      "id": "edge-4-evaluator-optimizer-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "evaluator",
+      "sourceHandle": "evaluator-4-left",
+      "target": "node-4-evaluator-optimizer",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-4-evaluator-optimizer",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Critique gaps"
+            ]
+          }
+        ],
+        "row": 4,
+        "from": "evaluator",
+        "to": "optimizer"
+      }
+    },
+    {
+      "id": "edge-4-evaluator-optimizer-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-4-evaluator-optimizer",
+      "sourceHandle": "left",
+      "target": "optimizer",
+      "targetHandle": "optimizer-4-right"
+    },
+    {
+      "id": "edge-5-optimizer-optimizer-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "optimizer",
+      "sourceHandle": "optimizer-5-right",
+      "target": "node-5-optimizer-optimizer",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-5-optimizer-optimizer",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Revise candidate"
+            ]
+          }
+        ],
+        "row": 5,
+        "from": "optimizer",
+        "to": "optimizer"
+      }
+    },
+    {
+      "id": "edge-5-optimizer-optimizer-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-5-optimizer-optimizer",
+      "sourceHandle": "bottom",
+      "target": "optimizer",
+      "targetHandle": "optimizer-6-right"
+    },
+    {
+      "id": "edge-6-optimizer-evaluator-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "optimizer",
+      "sourceHandle": "optimizer-6-right",
+      "target": "node-6-optimizer-evaluator",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-6-optimizer-evaluator",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Resubmit draft"
+            ]
+          }
+        ],
+        "row": 6,
+        "from": "optimizer",
+        "to": "evaluator"
+      }
+    },
+    {
+      "id": "edge-6-optimizer-evaluator-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-6-optimizer-evaluator",
+      "sourceHandle": "right",
+      "target": "evaluator",
+      "targetHandle": "evaluator-6-left"
+    },
+    {
+      "id": "edge-7-evaluator-optimizer-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "evaluator",
+      "sourceHandle": "evaluator-7-left",
+      "target": "node-7-evaluator-optimizer",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-7-evaluator-optimizer",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Approve final"
+            ]
+          }
+        ],
+        "row": 7,
+        "from": "evaluator",
+        "to": "optimizer"
+      }
+    },
+    {
+      "id": "edge-7-evaluator-optimizer-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-7-evaluator-optimizer",
+      "sourceHandle": "left",
+      "target": "optimizer",
+      "targetHandle": "optimizer-7-right"
+    },
+    {
+      "id": "edge-8-optimizer-user-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "optimizer",
+      "sourceHandle": "optimizer-8-left",
+      "target": "node-8-optimizer-user",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-8-optimizer-user",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return polished answer"
+            ]
+          }
+        ],
+        "row": 8,
+        "from": "optimizer",
+        "to": "user"
+      }
+    },
+    {
+      "id": "edge-8-optimizer-user-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-8-optimizer-user",
+      "sourceHandle": "left",
+      "target": "user",
+      "targetHandle": "user-8-right"
+    }
+  ]
+}

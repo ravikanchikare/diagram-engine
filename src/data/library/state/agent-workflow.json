@@ -1,0 +1,103 @@
+{
+  "type": "state",
+  "description": "A self-contained agent capability loop: every stage is executable from the terminal without human intermediation.",
+  "size": "medium",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "discover",
+      "type": "state",
+      "col": 0,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Discover"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "understand",
+      "type": "state",
+      "col": 1,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Understand"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "execute",
+      "type": "state",
+      "col": 1,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Execute"
+            ]
+          }
+        ],
+        "state": "success"
+      }
+    },
+    {
+      "id": "compose",
+      "type": "state",
+      "col": 0,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Compose"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "from": "discover",
+      "to": "understand",
+      "label": "inspect schema"
+    },
+    {
+      "from": "understand",
+      "to": "execute",
+      "label": "run --json"
+    },
+    {
+      "from": "execute",
+      "to": "compose",
+      "label": "format output"
+    },
+    {
+      "from": "compose",
+      "to": "discover",
+      "label": "next task"
+    }
+  ]
+}

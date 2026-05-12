@@ -1,0 +1,348 @@
+{
+  "type": "entity",
+  "description": "",
+  "size": "medium",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "invoice",
+      "type": "entity",
+      "data": {
+        "header": {
+          "$$mdtype": "Tag",
+          "name": "Paragraph",
+          "attributes": {},
+          "children": [
+            {
+              "$$mdtype": "Tag",
+              "name": "Link",
+              "attributes": {
+                "href": "/api/invoices/object"
+              },
+              "children": [
+                "Invoice"
+              ]
+            }
+          ]
+        },
+        "rows": [
+          {
+            "name": "id",
+            "value": " in_02ae51766c844635  ",
+            "handle": "id"
+          }
+        ],
+        "handles": [
+          "id"
+        ]
+      },
+      "position": {
+        "x": 768,
+        "y": -96
+      }
+    },
+    {
+      "id": "taxTransaction",
+      "type": "entity",
+      "data": {
+        "header": {
+          "$$mdtype": "Tag",
+          "name": "Paragraph",
+          "attributes": {},
+          "children": [
+            {
+              "$$mdtype": "Tag",
+              "name": "Link",
+              "attributes": {
+                "href": "/api/tax/transactions/object"
+              },
+              "children": [
+                "tax_transactions"
+              ]
+            }
+          ]
+        },
+        "rows": [
+          {
+            "name": "id",
+            "value": " tax_6ac9561b8d634d41  ",
+            "handle": "id"
+          },
+          {
+            "name": "source_id",
+            "value": "in_02ae51766c844635  ",
+            "handle": "source_id"
+          },
+          {
+            "name": "source_type",
+            "value": {
+              "$$mdtype": "Tag",
+              "name": "InlineCode",
+              "attributes": {
+                "content": "invoice",
+                "$$markdoc:type": "node"
+              },
+              "children": []
+            },
+            "handle": null
+          }
+        ],
+        "handles": [
+          "id",
+          "source_id"
+        ]
+      },
+      "position": {
+        "x": 416,
+        "y": -96
+      }
+    },
+    {
+      "id": "taxTransactionLi",
+      "type": "entity",
+      "data": {
+        "header": {
+          "$$mdtype": "Tag",
+          "name": "Paragraph",
+          "attributes": {},
+          "children": [
+            "tax_transaction_line_items[0]"
+          ]
+        },
+        "rows": [
+          {
+            "name": "id",
+            "value": " tax_li_f47e3fd32b384914  ",
+            "handle": "id"
+          },
+          {
+            "name": "tax_transaction_id",
+            "value": "tax_6ac9561b8d634d41  ",
+            "handle": "tax_transaction_idLi"
+          }
+        ],
+        "handles": [
+          "id",
+          "tax_transaction_idLi"
+        ]
+      },
+      "position": {
+        "x": -24,
+        "y": -96
+      }
+    },
+    {
+      "id": "taxTransactionSc",
+      "type": "entity",
+      "data": {
+        "header": {
+          "$$mdtype": "Tag",
+          "name": "Paragraph",
+          "attributes": {},
+          "children": [
+            "tax_transaction_shipping_costs[0]"
+          ]
+        },
+        "rows": [
+          {
+            "name": "id",
+            "value": " tax_li_8d87a750a4d340dc  ",
+            "handle": "id"
+          },
+          {
+            "name": "tax_transaction_id",
+            "value": "tax_6ac9561b8d634d41  ",
+            "handle": "tax_transaction_idSc"
+          }
+        ],
+        "handles": [
+          "id",
+          "tax_transaction_idSc"
+        ]
+      },
+      "position": {
+        "x": -32,
+        "y": 168
+      }
+    },
+    {
+      "id": "taxTrasnsactionLiJd",
+      "type": "entity",
+      "data": {
+        "header": {
+          "$$mdtype": "Tag",
+          "name": "Paragraph",
+          "attributes": {},
+          "children": [
+            "tax_transaction_jurisdiction_details[0]"
+          ]
+        },
+        "rows": [
+          {
+            "name": "tax_transaction_id",
+            "value": "tax_6ac9561b8d634d41  ",
+            "handle": "tax_transaction_id"
+          },
+          {
+            "name": "tax_transaction_item_id",
+            "value": " tax_li_f47e3fd32b384914  ",
+            "handle": "tax_transaction_item_idLi"
+          },
+          {
+            "name": "tax_transaction_item_type",
+            "value": {
+              "$$mdtype": "Tag",
+              "name": "InlineCode",
+              "attributes": {
+                "content": "tax_transaction_line_item",
+                "$$markdoc:type": "node"
+              },
+              "children": []
+            },
+            "handle": null
+          }
+        ],
+        "handles": [
+          "tax_transaction_id",
+          "tax_transaction_item_idLi"
+        ]
+      },
+      "position": {
+        "x": -576,
+        "y": -96
+      }
+    },
+    {
+      "id": "taxTransactionScJd",
+      "type": "entity",
+      "data": {
+        "header": {
+          "$$mdtype": "Tag",
+          "name": "Paragraph",
+          "attributes": {},
+          "children": [
+            "tax_transaction_jurisdiction_details[0]"
+          ]
+        },
+        "rows": [
+          {
+            "name": "tax_transaction_id",
+            "value": "tax_6ac9561b8d634d41  ",
+            "handle": "tax_transaction_id"
+          },
+          {
+            "name": "tax_transaction_item_id",
+            "value": "tax_li_8d87a750a4d340dc  ",
+            "handle": "tax_transaction_item_idSc"
+          },
+          {
+            "name": "tax_transaction_item_type",
+            "value": {
+              "$$mdtype": "Tag",
+              "name": "InlineCode",
+              "attributes": {
+                "content": "tax_transaction_shipping_cost",
+                "$$markdoc:type": "node"
+              },
+              "children": []
+            },
+            "handle": null
+          }
+        ],
+        "handles": [
+          "tax_transaction_id",
+          "tax_transaction_item_idSc"
+        ]
+      },
+      "position": {
+        "x": -592,
+        "y": 168
+      }
+    },
+    {
+      "id": "edge-tax_transaction_item_idSc-taxTransactionSc-right-left bottom",
+      "source": "taxTransactionScJd",
+      "target": "taxTransactionSc",
+      "label": "",
+      "arrowHeadType": "arrowclosed",
+      "type": "bend",
+      "labelStyle": {
+        "fontFamily": "Menlo"
+      },
+      "labelBgStyle": {
+        "fill": "#F6F8FA",
+        "filter": "drop-shadow(-1px 1px 1px rgb(60 66 87 / 8%))"
+      },
+      "sourceHandle": "tax_transaction_item_idSc",
+      "targetHandle": "left bottom"
+    },
+    {
+      "id": "edge-tax_transaction_item_idLi-taxTransactionLi-right-left bottom",
+      "source": "taxTrasnsactionLiJd",
+      "target": "taxTransactionLi",
+      "label": "",
+      "arrowHeadType": "arrowclosed",
+      "type": "bend",
+      "labelStyle": {
+        "fontFamily": "Menlo"
+      },
+      "labelBgStyle": {
+        "fill": "#F6F8FA",
+        "filter": "drop-shadow(-1px 1px 1px rgb(60 66 87 / 8%))"
+      },
+      "sourceHandle": "tax_transaction_item_idLi",
+      "targetHandle": "left bottom"
+    },
+    {
+      "id": "edge-tax_transaction_idSc-taxTransaction-right-left bottom",
+      "source": "taxTransactionSc",
+      "target": "taxTransaction",
+      "label": "",
+      "arrowHeadType": "arrowclosed",
+      "type": "bend",
+      "labelStyle": {
+        "fontFamily": "Menlo"
+      },
+      "labelBgStyle": {
+        "fill": "#F6F8FA",
+        "filter": "drop-shadow(-1px 1px 1px rgb(60 66 87 / 8%))"
+      },
+      "sourceHandle": "tax_transaction_idSc",
+      "targetHandle": "left bottom"
+    },
+    {
+      "id": "edge-tax_transaction_idLi-taxTransaction-right-left bottom",
+      "source": "taxTransactionLi",
+      "target": "taxTransaction",
+      "label": "",
+      "arrowHeadType": "arrowclosed",
+      "type": "bend",
+      "labelStyle": {
+        "fontFamily": "Menlo"
+      },
+      "labelBgStyle": {
+        "fill": "#F6F8FA",
+        "filter": "drop-shadow(-1px 1px 1px rgb(60 66 87 / 8%))"
+      },
+      "sourceHandle": "tax_transaction_idLi",
+      "targetHandle": "left bottom"
+    },
+    {
+      "id": "edge-source_id-invoice-right-left bottom",
+      "source": "taxTransaction",
+      "target": "invoice",
+      "label": "",
+      "arrowHeadType": "arrowclosed",
+      "type": "bend",
+      "labelStyle": {
+        "fontFamily": "Menlo"
+      },
+      "labelBgStyle": {
+        "fill": "#F6F8FA",
+        "filter": "drop-shadow(-1px 1px 1px rgb(60 66 87 / 8%))"
+      },
+      "sourceHandle": "source_id",
+      "targetHandle": "left bottom"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+SequenceActionNode
+
+              o target
+              |
+  o <------ +--------------------+ ------> o
+            |    action copy     |
+            +--------------------+
+              |
+              o source
+
+Visual characteristics
+
+- Rounded action card with centered text and clipped two-line content.
+- Top handle is target-only.
+- Bottom handle is source-only.
+- Left and right sides each expose both source and target handles at the same anchor point.
+- Loopback actions keep a wider minimum width so self-calls remain legible.

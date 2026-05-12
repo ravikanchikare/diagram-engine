@@ -1,0 +1,398 @@
+{
+  "type": "sequence",
+  "description": "Claude Code with sub-agents: exploratory work is delegated into an isolated context and summarized back.",
+  "size": "large",
+  "positioning": "auto",
+  "elements": [
+    {
+      "id": "user",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "User"
+            ]
+          }
+        ],
+        "index": 0,
+        "color": "default",
+        "rows": 9
+      }
+    },
+    {
+      "id": "claudeCode",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Claude Code"
+            ]
+          }
+        ],
+        "index": 1,
+        "color": "success",
+        "rows": 9
+      }
+    },
+    {
+      "id": "subAgent",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Sub-Agent"
+            ]
+          }
+        ],
+        "index": 2,
+        "color": "accent",
+        "rows": 9
+      }
+    },
+    {
+      "id": "edge-1-user-claudeCode-1",
+      "type": "smoothstep",
+      "source": "user",
+      "target": "node-1-user-claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "user-1-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-1-user-claudeCode",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Send request"
+            ]
+          }
+        ],
+        "row": 1,
+        "from": "user",
+        "to": "claudeCode"
+      }
+    },
+    {
+      "id": "edge-1-user-claudeCode-2",
+      "type": "smoothstep",
+      "source": "node-1-user-claudeCode",
+      "target": "claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "claudeCode-1-left"
+    },
+    {
+      "id": "edge-2-claudeCode-claudeCode-1",
+      "type": "smoothstep",
+      "source": "claudeCode",
+      "target": "node-2-claudeCode-claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "claudeCode-2-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-2-claudeCode-claudeCode",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Assess delegation fit"
+            ]
+          }
+        ],
+        "row": 2,
+        "from": "claudeCode",
+        "to": "claudeCode"
+      }
+    },
+    {
+      "id": "edge-2-claudeCode-claudeCode-2",
+      "type": "smoothstep",
+      "source": "node-2-claudeCode-claudeCode",
+      "target": "claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "bottom",
+      "targetHandle": "claudeCode-3-right"
+    },
+    {
+      "id": "edge-3-claudeCode-claudeCode-1",
+      "type": "smoothstep",
+      "source": "claudeCode",
+      "target": "node-3-claudeCode-claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "claudeCode-3-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-3-claudeCode-claudeCode",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Compose delegation prompt"
+            ]
+          }
+        ],
+        "row": 3,
+        "from": "claudeCode",
+        "to": "claudeCode"
+      }
+    },
+    {
+      "id": "edge-3-claudeCode-claudeCode-2",
+      "type": "smoothstep",
+      "source": "node-3-claudeCode-claudeCode",
+      "target": "claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "bottom",
+      "targetHandle": "claudeCode-4-right"
+    },
+    {
+      "id": "edge-4-claudeCode-subAgent-1",
+      "type": "smoothstep",
+      "source": "claudeCode",
+      "target": "node-4-claudeCode-subAgent",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "claudeCode-4-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-4-claudeCode-subAgent",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Delegate bounded task"
+            ]
+          }
+        ],
+        "row": 4,
+        "from": "claudeCode",
+        "to": "subAgent"
+      }
+    },
+    {
+      "id": "edge-4-claudeCode-subAgent-2",
+      "type": "smoothstep",
+      "source": "node-4-claudeCode-subAgent",
+      "target": "subAgent",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "subAgent-4-left"
+    },
+    {
+      "id": "edge-5-subAgent-subAgent-1",
+      "type": "smoothstep",
+      "source": "subAgent",
+      "target": "node-5-subAgent-subAgent",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "subAgent-5-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-5-subAgent-subAgent",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Explore in isolation"
+            ]
+          }
+        ],
+        "row": 5,
+        "from": "subAgent",
+        "to": "subAgent"
+      }
+    },
+    {
+      "id": "edge-5-subAgent-subAgent-2",
+      "type": "smoothstep",
+      "source": "node-5-subAgent-subAgent",
+      "target": "subAgent",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "bottom",
+      "targetHandle": "subAgent-6-right"
+    },
+    {
+      "id": "edge-6-subAgent-subAgent-1",
+      "type": "smoothstep",
+      "source": "subAgent",
+      "target": "node-6-subAgent-subAgent",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "subAgent-6-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-6-subAgent-subAgent",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Organize findings"
+            ]
+          }
+        ],
+        "row": 6,
+        "from": "subAgent",
+        "to": "subAgent"
+      }
+    },
+    {
+      "id": "edge-6-subAgent-subAgent-2",
+      "type": "smoothstep",
+      "source": "node-6-subAgent-subAgent",
+      "target": "subAgent",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "bottom",
+      "targetHandle": "subAgent-7-right"
+    },
+    {
+      "id": "edge-7-subAgent-claudeCode-1",
+      "type": "smoothstep",
+      "source": "subAgent",
+      "target": "node-7-subAgent-claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "subAgent-7-left",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-7-subAgent-claudeCode",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return structured summary"
+            ]
+          }
+        ],
+        "row": 7,
+        "from": "subAgent",
+        "to": "claudeCode"
+      }
+    },
+    {
+      "id": "edge-7-subAgent-claudeCode-2",
+      "type": "smoothstep",
+      "source": "node-7-subAgent-claudeCode",
+      "target": "claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "left",
+      "targetHandle": "claudeCode-7-right"
+    },
+    {
+      "id": "edge-8-claudeCode-claudeCode-1",
+      "type": "smoothstep",
+      "source": "claudeCode",
+      "target": "node-8-claudeCode-claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "claudeCode-8-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-8-claudeCode-claudeCode",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Integrate summary"
+            ]
+          }
+        ],
+        "row": 8,
+        "from": "claudeCode",
+        "to": "claudeCode"
+      }
+    },
+    {
+      "id": "edge-8-claudeCode-claudeCode-2",
+      "type": "smoothstep",
+      "source": "node-8-claudeCode-claudeCode",
+      "target": "claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "bottom",
+      "targetHandle": "claudeCode-9-right"
+    },
+    {
+      "id": "edge-9-claudeCode-user-1",
+      "type": "smoothstep",
+      "source": "claudeCode",
+      "target": "node-9-claudeCode-user",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "claudeCode-9-left",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-9-claudeCode-user",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return response"
+            ]
+          }
+        ],
+        "row": 9,
+        "from": "claudeCode",
+        "to": "user"
+      }
+    },
+    {
+      "id": "edge-9-claudeCode-user-2",
+      "type": "smoothstep",
+      "source": "node-9-claudeCode-user",
+      "target": "user",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "left",
+      "targetHandle": "user-9-right"
+    }
+  ]
+}

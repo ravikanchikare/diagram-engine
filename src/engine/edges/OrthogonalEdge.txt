@@ -1,0 +1,22 @@
+OrthogonalEdge
+
+Primary shape
+
+source -------+
+              |
+              +-------> target
+
+Top-entry variant
+
+source -------+
+              |
+              v
+            target
+
+Visual characteristics
+
+- Horizontal and vertical segments only.
+- Corners are rounded instead of hard 90-degree joints.
+- Default routing moves horizontally first, then vertically.
+- If the target enters from the top, the final segment drops vertically into it.
+- Arrowhead comes from the supplied `markerEnd`.

@@ -1,0 +1,161 @@
+{
+  "name": "Routing",
+  "type": "state",
+  "description": "Routing classifies an input and sends it to a specialized downstream path so each category can use its own prompt and tools.",
+  "size": "large",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "classifyInput",
+      "type": "state",
+      "col": 0,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Classify incoming request"
+            ]
+          }
+        ]
+      },
+      "x": -112,
+      "y": 176
+    },
+    {
+      "id": "retrievalPath",
+      "type": "state",
+      "col": 1,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Send to retrieval prompt"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": 224,
+      "y": 0
+    },
+    {
+      "id": "toolPath",
+      "type": "state",
+      "col": 1,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Send to tool-use prompt"
+            ]
+          }
+        ],
+        "state": "success"
+      },
+      "x": 224,
+      "y": 176
+    },
+    {
+      "id": "writingPath",
+      "type": "state",
+      "col": 1,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Send to writing prompt"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": 240,
+      "y": 352
+    },
+    {
+      "id": "returnSpecialistResult",
+      "type": "state",
+      "col": 2,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return specialist result"
+            ]
+          }
+        ],
+        "state": "success"
+      },
+      "x": 608,
+      "y": 176
+    },
+    {
+      "from": "classifyInput",
+      "to": "retrievalPath",
+      "label": "facts",
+      "type": "bend",
+      "fromPosition": "top",
+      "toPosition": "left"
+    },
+    {
+      "from": "classifyInput",
+      "to": "toolPath",
+      "label": "action",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "classifyInput",
+      "to": "writingPath",
+      "label": "explain",
+      "type": "bend",
+      "fromPosition": "bottom",
+      "toPosition": "left"
+    },
+    {
+      "from": "retrievalPath",
+      "to": "returnSpecialistResult",
+      "label": "specialist answer",
+      "type": "bend",
+      "fromPosition": "right",
+      "toPosition": "top"
+    },
+    {
+      "from": "toolPath",
+      "to": "returnSpecialistResult",
+      "label": "specialist answer",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "writingPath",
+      "to": "returnSpecialistResult",
+      "label": "specialist answer",
+      "type": "bend",
+      "fromPosition": "right",
+      "toPosition": "bottom"
+    }
+  ]
+}

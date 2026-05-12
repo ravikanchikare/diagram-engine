@@ -1,0 +1,19 @@
+OverviewIconNode
+
+           o
+           |
+        +-------+
+        | [#]   |
+        +-------+
+         Label
+         detail
+     o           o
+           o
+
+Visual characteristics
+
+- Centered icon inside a rounded square glyph tile.
+- Label appears below the glyph.
+- Optional detail copy appears as a smaller line under the label.
+- Four-side handles are available around the node.
+- Color modifier class can tint the visual treatment for semantic categories.

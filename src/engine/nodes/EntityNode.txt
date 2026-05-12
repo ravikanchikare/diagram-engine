@@ -1,0 +1,22 @@
+EntityNode
+
+                    o row source handle
+  o target handle   |
+  |                 v
+  +--------------------------------------+
+  | Header                               |
+  +----------------+---------------------+
+  | field_a        | sample_value      o |
+  | field_b        | sample_value      o |
+  | field_c        | sample_value        |
+  +--------------------------------------+
+  | show/hide sample arguments           |
+  +--------------------------------------+
+
+Visual characteristics
+
+- Rounded card with a header band, tabular rows, and a footer toggle.
+- Left-side incoming handle sits near the lower rows.
+- Right-side outgoing handles appear only on rows that declare a handle id.
+- Row names and values are split into two columns with subtle dividers.
+- Footer button collapses or expands the sample-value column content.

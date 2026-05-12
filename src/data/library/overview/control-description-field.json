@@ -1,0 +1,164 @@
+{
+  "type": "overview",
+  "description": "Overview: the description field influences when Claude Code launches a sub-agent and how it writes the delegation prompt.",
+  "size": "large",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "user",
+      "type": "icon",
+      "data": {
+        "icon": "user",
+        "text": [],
+        "size": "auto",
+        "color": "default"
+      },
+      "position": {
+        "x": 16,
+        "y": 112
+      }
+    },
+    {
+      "id": "claudeCode",
+      "type": "icon",
+      "data": {
+        "icon": "claude-code",
+        "text": [],
+        "size": "auto",
+        "color": "default"
+      },
+      "position": {
+        "x": 256,
+        "y": 112
+      }
+    },
+    {
+      "id": "descriptionField",
+      "type": "icon",
+      "data": {
+        "icon": "description-field",
+        "text": [],
+        "size": "auto",
+        "color": "default"
+      },
+      "position": {
+        "x": 528,
+        "y": 112
+      }
+    },
+    {
+      "id": "launchTiming",
+      "type": "text",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Launch timing"
+            ]
+          }
+        ],
+        "size": "medium",
+        "color": "default"
+      },
+      "position": {
+        "x": 800,
+        "y": 48
+      }
+    },
+    {
+      "id": "promptShape",
+      "type": "text",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Prompt wording"
+            ]
+          }
+        ],
+        "size": "medium",
+        "color": "default"
+      },
+      "position": {
+        "x": 800,
+        "y": 208
+      }
+    },
+    {
+      "id": "subAgent",
+      "type": "icon",
+      "data": {
+        "icon": "sub-agent",
+        "text": [],
+        "size": "auto",
+        "color": "default"
+      },
+      "position": {
+        "x": 1056,
+        "y": 112
+      }
+    },
+    {
+      "id": "edge-user-claudeCode-right-left",
+      "source": "user",
+      "target": "claudeCode",
+      "arrowHeadType": "arrowclosed",
+      "label": "Incoming task",
+      "type": "straight",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "edge-claudeCode-descriptionField-right-left",
+      "source": "claudeCode",
+      "target": "descriptionField",
+      "arrowHeadType": "arrowclosed",
+      "label": "Reads description",
+      "type": "straight",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "edge-descriptionField-launchTiming-right-left",
+      "source": "descriptionField",
+      "target": "launchTiming",
+      "arrowHeadType": "arrowclosed",
+      "type": "default",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "edge-descriptionField-promptShape-right-left",
+      "source": "descriptionField",
+      "target": "promptShape",
+      "arrowHeadType": "arrowclosed",
+      "type": "default",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "edge-launchTiming-subAgent-right-left",
+      "source": "launchTiming",
+      "target": "subAgent",
+      "arrowHeadType": "arrowclosed",
+      "type": "default",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "edge-promptShape-subAgent-right-left",
+      "source": "promptShape",
+      "target": "subAgent",
+      "arrowHeadType": "arrowclosed",
+      "type": "default",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    }
+  ]
+}

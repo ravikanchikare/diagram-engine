@@ -1,0 +1,16 @@
+OverviewTextNode
+
+           o
+           |
+  o +----------------------+ o
+    |   centered text      |
+    +----------------------+
+           |
+           o
+
+Visual characteristics
+
+- Rounded text card with centered monospaced content.
+- Four-side handles are available around the node.
+- Width is layout-driven and can expand with content sizing rules.
+- Used for neutral overview statements instead of icon-first blocks.

@@ -1,0 +1,172 @@
+{
+  "type": "state",
+  "description": "Denied endpoints are hidden from listing entirely — not just blocked at execution.",
+  "size": "medium",
+  "positioning": "manual",
+  "elements": [
+    {
+      "id": "request",
+      "type": "state",
+      "col": 0,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Endpoint request"
+            ]
+          }
+        ]
+      },
+      "x": 128,
+      "y": 176
+    },
+    {
+      "id": "permCheck",
+      "type": "state",
+      "col": 1,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Permission check"
+            ]
+          }
+        ],
+        "state": "accent"
+      },
+      "x": 400,
+      "y": 176
+    },
+    {
+      "id": "allowed",
+      "type": "state",
+      "col": 2,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Allowed"
+            ]
+          }
+        ],
+        "state": "success"
+      },
+      "x": 608,
+      "y": 0
+    },
+    {
+      "id": "denied",
+      "type": "state",
+      "col": 2,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Denied"
+            ]
+          }
+        ],
+        "state": "danger"
+      },
+      "x": 608,
+      "y": 352
+    },
+    {
+      "id": "execute",
+      "type": "state",
+      "col": 3,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Visible + executable"
+            ]
+          }
+        ],
+        "state": "success"
+      },
+      "x": 912,
+      "y": 0
+    },
+    {
+      "id": "hidden",
+      "type": "state",
+      "col": 3,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Hidden from listing"
+            ]
+          }
+        ]
+      },
+      "x": 912,
+      "y": 352
+    },
+    {
+      "from": "request",
+      "to": "permCheck",
+      "label": "evaluate",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "permCheck",
+      "to": "allowed",
+      "label": "passes",
+      "type": "bend",
+      "fromPosition": "right",
+      "toPosition": "bottom"
+    },
+    {
+      "from": "permCheck",
+      "to": "denied",
+      "label": "fails",
+      "type": "bend",
+      "fromPosition": "right",
+      "toPosition": "top"
+    },
+    {
+      "from": "allowed",
+      "to": "execute",
+      "label": "run command",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    },
+    {
+      "from": "denied",
+      "to": "hidden",
+      "label": "suppress endpoint",
+      "type": "straight",
+      "fromPosition": "right",
+      "toPosition": "left"
+    }
+  ]
+}

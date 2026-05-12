@@ -1,0 +1,19 @@
+SequenceActorNode
+
+      +----------------------+
+      | | Actor heading      |
+      +----------------------+
+        |
+  o ----|---- o   row 1
+        #
+  o ----|---- o   row 2
+        |
+  o ----|---- o   row 3
+
+Visual characteristics
+
+- Actor header includes a thin vertical accent bar beside the heading.
+- A short connector drops from the header into the main lifeline.
+- Lifeline runs vertically through the lane area.
+- Active rows render thicker colored segments on top of the lifeline.
+- Every row exposes left and right handles, each duplicated for source and target use.

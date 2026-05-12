@@ -1,0 +1,204 @@
+{
+  "name": "Theme Override Demo",
+  "type": "state",
+  "description": "A compact agent review loop with per-diagram tokens so theme overrides are easy to validate in light and dark mode.",
+  "size": "large",
+  "positioning": "manual",
+  "tokens": {
+    "light": {
+      "canvas": {
+        "gridColor": "#d7e2ff"
+      },
+      "node": {
+        "background": "#ffffff",
+        "border": "#b8c8ee",
+        "text": {
+          "default": "#2a3655",
+          "heading": "#1f2b45",
+          "muted": "#5a688d"
+        },
+        "states": {
+          "accent": {
+            "background": "#eef4ff",
+            "border": "#7fa7ff"
+          },
+          "success": {
+            "background": "#eefbf2",
+            "border": "#75c58d"
+          },
+          "danger": {
+            "background": "#fff1ef",
+            "border": "#ef8a7d"
+          }
+        }
+      },
+      "connector": {
+        "default": "#7f91b5",
+        "accent": "#5b7fff",
+        "success": "#4ea86e",
+        "danger": "#d96a5e",
+        "labelBackground": "#f8fbff"
+      }
+    },
+    "dark": {
+      "canvas": {
+        "gridColor": "#33415f"
+      },
+      "node": {
+        "background": "#101827",
+        "border": "#33415f",
+        "text": {
+          "default": "#e6edf8",
+          "heading": "#f3f7ff",
+          "muted": "#9aa8c5"
+        },
+        "states": {
+          "accent": {
+            "background": "#182745",
+            "border": "#5b7fff"
+          },
+          "success": {
+            "background": "#11281c",
+            "border": "#4ea86e"
+          },
+          "danger": {
+            "background": "#34171b",
+            "border": "#d96a5e"
+          }
+        }
+      },
+      "connector": {
+        "default": "#8fa3cc",
+        "accent": "#7ea2ff",
+        "success": "#6ad48c",
+        "danger": "#ff8d7e",
+        "labelBackground": "#172033"
+      }
+    }
+  },
+  "elements": [
+    {
+      "id": "captureTask",
+      "type": "state",
+      "col": 0,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Capture task"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "classifyIntent",
+      "type": "state",
+      "col": 1,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Classify intent"
+            ]
+          }
+        ],
+        "state": "accent"
+      }
+    },
+    {
+      "id": "invokeTools",
+      "type": "state",
+      "col": 2,
+      "row": 0,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Invoke tools"
+            ]
+          }
+        ],
+        "state": "success"
+      }
+    },
+    {
+      "id": "requestRevision",
+      "type": "state",
+      "col": 2,
+      "row": 2,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Request revision"
+            ]
+          }
+        ],
+        "state": "danger"
+      }
+    },
+    {
+      "id": "finalizeAnswer",
+      "type": "state",
+      "col": 3,
+      "row": 1,
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Finalize answer"
+            ]
+          }
+        ],
+        "state": "success"
+      }
+    },
+    {
+      "from": "captureTask",
+      "to": "classifyIntent",
+      "label": "parse"
+    },
+    {
+      "from": "classifyIntent",
+      "to": "invokeTools",
+      "label": "confident",
+      "state": "accent"
+    },
+    {
+      "from": "classifyIntent",
+      "to": "requestRevision",
+      "label": "needs check",
+      "state": "danger"
+    },
+    {
+      "from": "invokeTools",
+      "to": "finalizeAnswer",
+      "label": "evidence",
+      "state": "success"
+    },
+    {
+      "from": "requestRevision",
+      "to": "finalizeAnswer",
+      "label": "approved",
+      "state": "accent"
+    }
+  ]
+}

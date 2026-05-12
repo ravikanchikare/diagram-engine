@@ -1,0 +1,428 @@
+{
+  "type": "sequence",
+  "description": "A diagram of a checkout integration lifecycle",
+  "size": "large",
+  "positioning": "auto",
+  "elements": [
+    {
+      "id": "client",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Client"
+            ]
+          }
+        ],
+        "index": 0,
+        "color": "default",
+        "rows": 5
+      }
+    },
+    {
+      "id": "server",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Server"
+            ]
+          }
+        ],
+        "index": 1,
+        "color": "success",
+        "rows": 5
+      }
+    },
+    {
+      "id": "paymentApi",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Payment API"
+            ]
+          }
+        ],
+        "index": 2,
+        "color": "default",
+        "rows": 5
+      }
+    },
+    {
+      "id": "paymentUi",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Payment UI"
+            ]
+          }
+        ],
+        "index": 3,
+        "color": "default",
+        "rows": 5
+      }
+    },
+    {
+      "id": "edge-1-client-server-1",
+      "type": "smoothstep",
+      "source": "client",
+      "target": "node-1-client-server",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "client-1-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-1-client-server",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Send order information"
+            ]
+          }
+        ],
+        "row": 1,
+        "from": "client",
+        "to": "server"
+      }
+    },
+    {
+      "id": "edge-1-client-server-2",
+      "type": "smoothstep",
+      "source": "node-1-client-server",
+      "target": "server",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "server-1-left"
+    },
+    {
+      "id": "edge-1-server-paymentApi-1",
+      "type": "smoothstep",
+      "source": "server",
+      "target": "node-1-server-paymentApi",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "server-1-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-1-server-paymentApi",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Create ",
+              {
+                "$$mdtype": "Tag",
+                "name": "InlineCode",
+                "attributes": {
+                  "content": "Checkout Session",
+                  "$$markdoc:type": "node"
+                },
+                "children": []
+              }
+            ]
+          }
+        ],
+        "row": 1,
+        "from": "server",
+        "to": "paymentApi"
+      }
+    },
+    {
+      "id": "edge-1-server-paymentApi-2",
+      "type": "smoothstep",
+      "source": "node-1-server-paymentApi",
+      "target": "paymentApi",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "paymentApi-1-left"
+    },
+    {
+      "id": "edge-2-paymentApi-server-1",
+      "type": "smoothstep",
+      "source": "paymentApi",
+      "target": "node-2-paymentApi-server",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "paymentApi-2-left",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-2-paymentApi-server",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return ",
+              {
+                "$$mdtype": "Tag",
+                "name": "InlineCode",
+                "attributes": {
+                  "content": "Checkout Session",
+                  "$$markdoc:type": "node"
+                },
+                "children": []
+              }
+            ]
+          }
+        ],
+        "row": 2,
+        "from": "paymentApi",
+        "to": "server"
+      }
+    },
+    {
+      "id": "edge-2-paymentApi-server-2",
+      "type": "smoothstep",
+      "source": "node-2-paymentApi-server",
+      "target": "server",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "left",
+      "targetHandle": "server-2-right"
+    },
+    {
+      "id": "edge-2-server-client-1",
+      "type": "smoothstep",
+      "source": "server",
+      "target": "node-2-server-client",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "server-2-left",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-2-server-client",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Return ",
+              {
+                "$$mdtype": "Tag",
+                "name": "InlineCode",
+                "attributes": {
+                  "content": "Checkout Session",
+                  "$$markdoc:type": "node"
+                },
+                "children": []
+              },
+              " client secret"
+            ]
+          }
+        ],
+        "row": 2,
+        "from": "server",
+        "to": "client"
+      }
+    },
+    {
+      "id": "edge-2-server-client-2",
+      "type": "smoothstep",
+      "source": "node-2-server-client",
+      "target": "client",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "left",
+      "targetHandle": "client-2-right"
+    },
+    {
+      "id": "edge-3-client-paymentUi-1",
+      "type": "smoothstep",
+      "source": "client",
+      "target": "node-3-client-paymentUi",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "client-3-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-3-client-paymentUi",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Mount Elements on your website"
+            ]
+          }
+        ],
+        "row": 3,
+        "from": "client",
+        "to": "paymentUi"
+      }
+    },
+    {
+      "id": "edge-3-client-paymentUi-2",
+      "type": "smoothstep",
+      "source": "node-3-client-paymentUi",
+      "target": "paymentUi",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "right",
+      "targetHandle": "paymentUi-3-left"
+    },
+    {
+      "id": "edge-4-paymentUi-paymentUi-1",
+      "type": "smoothstep",
+      "source": "paymentUi",
+      "target": "node-4-paymentUi-paymentUi",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "paymentUi-3-right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-4-paymentUi-paymentUi",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Customer completes payment"
+            ]
+          }
+        ],
+        "row": 3,
+        "from": "paymentUi",
+        "to": "paymentUi"
+      }
+    },
+    {
+      "id": "edge-4-paymentUi-paymentUi-2",
+      "type": "smoothstep",
+      "source": "node-4-paymentUi-paymentUi",
+      "target": "paymentUi",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "bottom",
+      "targetHandle": "paymentUi-4-right"
+    },
+    {
+      "id": "edge-4-paymentUi-client-1",
+      "type": "smoothstep",
+      "source": "paymentUi",
+      "target": "node-4-paymentUi-client",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "paymentUi-4-left",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-4-paymentUi-client",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Customer is redirected to your ",
+              {
+                "$$mdtype": "Tag",
+                "name": "InlineCode",
+                "attributes": {
+                  "content": "return_url",
+                  "$$markdoc:type": "node"
+                },
+                "children": []
+              },
+              ", if applicable."
+            ]
+          }
+        ],
+        "row": 4,
+        "from": "paymentUi",
+        "to": "client"
+      }
+    },
+    {
+      "id": "edge-4-paymentUi-client-2",
+      "type": "smoothstep",
+      "source": "node-4-paymentUi-client",
+      "target": "client",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "left",
+      "targetHandle": "client-4-right"
+    },
+    {
+      "id": "edge-5-paymentApi-server-1",
+      "type": "dashed",
+      "source": "paymentApi",
+      "target": "node-5-paymentApi-server",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "paymentApi-5-left",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-5-paymentApi-server",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Handle ",
+              {
+                "$$mdtype": "Tag",
+                "name": "Glossary",
+                "attributes": {
+                  "term": "fulfillment"
+                },
+                "children": [
+                  "fulfillment"
+                ]
+              }
+            ]
+          }
+        ],
+        "row": 5,
+        "from": "paymentApi",
+        "to": "server"
+      }
+    },
+    {
+      "id": "edge-5-paymentApi-server-2",
+      "type": "dashed",
+      "source": "node-5-paymentApi-server",
+      "target": "server",
+      "arrowHeadType": "arrowclosed",
+      "sourceHandle": "left",
+      "targetHandle": "server-5-right"
+    }
+  ]
+}

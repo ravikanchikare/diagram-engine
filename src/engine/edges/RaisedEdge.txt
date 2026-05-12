@@ -1,0 +1,16 @@
+RaisedEdge
+
+Primary shape
+
+             [ label ]
+             +--------+
+             |        |
+source ------+        +-------> target
+
+Visual characteristics
+
+- Leaves the source vertically, lifts above both endpoints, then returns vertically to the target.
+- Top rail is centered above the connected nodes and can carry the edge label.
+- Label sits slightly above the raised horizontal segment.
+- Uses the shared rounded-corner orthogonal path treatment.
+- Arrowhead comes from the supplied `markerEnd`.

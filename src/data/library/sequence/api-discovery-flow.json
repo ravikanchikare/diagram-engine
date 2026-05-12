@@ -1,0 +1,509 @@
+{
+  "type": "sequence",
+  "description": "Agent narrows from 1,272+ endpoints to a single executed call using four progressive discovery steps.",
+  "size": "large",
+  "positioning": "auto",
+  "elements": [
+    {
+      "id": "agent",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "Coding Agent"
+            ]
+          }
+        ],
+        "index": 0,
+        "color": "default",
+        "rows": 12
+      }
+    },
+    {
+      "id": "cli",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "CLI"
+            ]
+          }
+        ],
+        "index": 1,
+        "color": "success",
+        "rows": 12
+      }
+    },
+    {
+      "id": "api",
+      "type": "sequenceActor",
+      "data": {
+        "heading": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "API"
+            ]
+          }
+        ],
+        "index": 2,
+        "color": "accent",
+        "rows": 12
+      }
+    },
+    {
+      "id": "edge-1-agent-cli-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "agent",
+      "sourceHandle": "agent-1-right",
+      "target": "node-1-agent-cli",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-1-agent-cli",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "api list"
+            ]
+          }
+        ],
+        "row": 1,
+        "from": "agent",
+        "to": "cli"
+      }
+    },
+    {
+      "id": "edge-1-agent-cli-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-1-agent-cli",
+      "sourceHandle": "right",
+      "target": "cli",
+      "targetHandle": "cli-1-left"
+    },
+    {
+      "id": "edge-2-cli-api-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "cli",
+      "sourceHandle": "cli-2-right",
+      "target": "node-2-cli-api",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-2-cli-api",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "resolve domain index"
+            ]
+          }
+        ],
+        "row": 2,
+        "from": "cli",
+        "to": "api"
+      }
+    },
+    {
+      "id": "edge-2-cli-api-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-2-cli-api",
+      "sourceHandle": "right",
+      "target": "api",
+      "targetHandle": "api-2-left"
+    },
+    {
+      "id": "edge-3-api-cli-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "api",
+      "sourceHandle": "api-3-left",
+      "target": "node-3-api-cli",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-3-api-cli",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "130+ domains with counts"
+            ]
+          }
+        ],
+        "row": 3,
+        "from": "api",
+        "to": "cli"
+      }
+    },
+    {
+      "id": "edge-3-api-cli-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-3-api-cli",
+      "sourceHandle": "left",
+      "target": "cli",
+      "targetHandle": "cli-3-right"
+    },
+    {
+      "id": "edge-4-cli-agent-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "cli",
+      "sourceHandle": "cli-4-left",
+      "target": "node-4-cli-agent",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-4-cli-agent",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "render domain list"
+            ]
+          }
+        ],
+        "row": 4,
+        "from": "cli",
+        "to": "agent"
+      }
+    },
+    {
+      "id": "edge-4-cli-agent-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-4-cli-agent",
+      "sourceHandle": "left",
+      "target": "agent",
+      "targetHandle": "agent-4-right"
+    },
+    {
+      "id": "edge-5-agent-cli-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "agent",
+      "sourceHandle": "agent-5-right",
+      "target": "node-5-agent-cli",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-5-agent-cli",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "api list --domain works"
+            ]
+          }
+        ],
+        "row": 5,
+        "from": "agent",
+        "to": "cli"
+      }
+    },
+    {
+      "id": "edge-5-agent-cli-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-5-agent-cli",
+      "sourceHandle": "right",
+      "target": "cli",
+      "targetHandle": "cli-5-left"
+    },
+    {
+      "id": "edge-6-cli-agent-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "cli",
+      "sourceHandle": "cli-6-left",
+      "target": "node-6-cli-agent",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-6-cli-agent",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "endpoints in domain"
+            ]
+          }
+        ],
+        "row": 6,
+        "from": "cli",
+        "to": "agent"
+      }
+    },
+    {
+      "id": "edge-6-cli-agent-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-6-cli-agent",
+      "sourceHandle": "left",
+      "target": "agent",
+      "targetHandle": "agent-6-right"
+    },
+    {
+      "id": "edge-7-agent-cli-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "agent",
+      "sourceHandle": "agent-7-right",
+      "target": "node-7-agent-cli",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-7-agent-cli",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "api /works.list --dry-run"
+            ]
+          }
+        ],
+        "row": 7,
+        "from": "agent",
+        "to": "cli"
+      }
+    },
+    {
+      "id": "edge-7-agent-cli-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-7-agent-cli",
+      "sourceHandle": "right",
+      "target": "cli",
+      "targetHandle": "cli-7-left"
+    },
+    {
+      "id": "edge-8-cli-agent-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "cli",
+      "sourceHandle": "cli-8-left",
+      "target": "node-8-cli-agent",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-8-cli-agent",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "param + schema preview"
+            ]
+          }
+        ],
+        "row": 8,
+        "from": "cli",
+        "to": "agent"
+      }
+    },
+    {
+      "id": "edge-8-cli-agent-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-8-cli-agent",
+      "sourceHandle": "left",
+      "target": "agent",
+      "targetHandle": "agent-8-right"
+    },
+    {
+      "id": "edge-9-agent-cli-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "agent",
+      "sourceHandle": "agent-9-right",
+      "target": "node-9-agent-cli",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-9-agent-cli",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "api /works.list --json --fields id,name"
+            ]
+          }
+        ],
+        "row": 9,
+        "from": "agent",
+        "to": "cli"
+      }
+    },
+    {
+      "id": "edge-9-agent-cli-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-9-agent-cli",
+      "sourceHandle": "right",
+      "target": "cli",
+      "targetHandle": "cli-9-left"
+    },
+    {
+      "id": "edge-10-cli-api-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "cli",
+      "sourceHandle": "cli-10-right",
+      "target": "node-10-cli-api",
+      "targetHandle": "left"
+    },
+    {
+      "id": "node-10-cli-api",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "execute HTTP request"
+            ]
+          }
+        ],
+        "row": 10,
+        "from": "cli",
+        "to": "api"
+      }
+    },
+    {
+      "id": "edge-10-cli-api-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-10-cli-api",
+      "sourceHandle": "right",
+      "target": "api",
+      "targetHandle": "api-10-left"
+    },
+    {
+      "id": "edge-11-api-cli-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "api",
+      "sourceHandle": "api-11-left",
+      "target": "node-11-api-cli",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-11-api-cli",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "response payload"
+            ]
+          }
+        ],
+        "row": 11,
+        "from": "api",
+        "to": "cli"
+      }
+    },
+    {
+      "id": "edge-11-api-cli-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-11-api-cli",
+      "sourceHandle": "left",
+      "target": "cli",
+      "targetHandle": "cli-11-right"
+    },
+    {
+      "id": "edge-12-cli-agent-1",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "cli",
+      "sourceHandle": "cli-12-left",
+      "target": "node-12-cli-agent",
+      "targetHandle": "right"
+    },
+    {
+      "id": "node-12-cli-agent",
+      "type": "sequenceAction",
+      "data": {
+        "text": [
+          {
+            "$$mdtype": "Tag",
+            "name": "Paragraph",
+            "attributes": {},
+            "children": [
+              "filtered fields output"
+            ]
+          }
+        ],
+        "row": 12,
+        "from": "cli",
+        "to": "agent"
+      }
+    },
+    {
+      "id": "edge-12-cli-agent-2",
+      "type": "smoothstep",
+      "arrowHeadType": "arrowclosed",
+      "source": "node-12-cli-agent",
+      "sourceHandle": "left",
+      "target": "agent",
+      "targetHandle": "agent-12-right"
+    }
+  ]
+}

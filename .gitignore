@@ -1,0 +1,21 @@
+node_modules/
+dist/
+docs/
+.playwright-cli/
+output/
+.DS_Store
+coverage/
+*.log
+
+.playwright-mcp
+diagram-screenshots/
+.archive/
+.kiro/
+
+# Agent state / private docs — never publish
+AGENTS.md
+CLAUDE.md
+.codex/
+.claude/
+.vite/
+.codex-snapshots/

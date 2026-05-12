@@ -1,0 +1,34 @@
+StateConnectionEdge
+
+Straight same-row flow
+
+A -------------------------------> B
+             [ label ]
+
+Orthogonal bend
+
+A -----------+
+             |
+             +-------------------> B
+
+Raised variant
+
+              [ label ]
+              +--------+
+              |        |
+A ------------+        +----------> B
+
+Loopback on the same row
+
+    +-------------------------------+
+    |          loop label           |
+    v                               |
+A <---------------------------------+ B
+
+Visual characteristics
+
+- Main state-diagram connector renderer for straight, stepped, and raised flows.
+- Picks an orthogonal route from the source and target handle positions.
+- Same-row backward loops switch to top or bottom handles and add a small offset track.
+- Longer labels can widen the horizontal run so text does not crowd the turn.
+- Label is placed on the longest visible segment and is clickable to select the connector.
